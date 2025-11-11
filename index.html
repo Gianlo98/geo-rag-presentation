@@ -8,19 +8,27 @@
 
 		<title>GEO & RAG - Generative Engine Optimization and Retrieval-Augmented Generation</title>
 
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&family=Overpass+Mono:wght@400;600&display=swap" rel="stylesheet">
+
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
 		<link rel="stylesheet" href="dist/theme/black.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+		<!-- Custom styles -->
+		<link rel="stylesheet" href="css/custom.css">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
 				<!-- Slide 0: Title & Why Now -->
-				<section>
-					<h1>Generative Engine Optimization (GEO) & RAG</h1>
+				<section class="section-divider">
+					<h1 class="r-fit-text">Generative Engine Optimization (GEO) & RAG</h1>
 					<h3>From Search to Synthesis</h3>
 					<p>
 						<small>Gianlorenzo Occhipinti</small><br>
@@ -29,132 +37,150 @@
 				</section>
 
 				<!-- Slide 1: GEO Overview - Definition -->
-				<section>
+				<section class="has-title">
 					<h2>The New Search Landscape</h2>
-					<ul>
-						<li>AI search (ChatGPT, Bing Chat, Google's SGE) is changing how users find info</li>
-						<li>Traditional SEO alone isn't enough in an era of AI-generated answers</li>
-						<li><strong>GEO = Generative Engine Optimization:</strong> ensuring your content is picked up and cited by AI engines</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment">AI search (ChatGPT, Bing Chat, Google's SGE) is changing how users find info</li>
+							<li class="fragment">Traditional SEO alone isn't enough in an era of AI-generated answers</li>
+							<li class="fragment"><strong class="highlight-orange">GEO = Generative Engine Optimization:</strong> ensuring your content is picked up and cited by AI engines</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						In the past, we optimized for Google's blue links. Now we have to think about AI-driven search – tools like ChatGPT, Perplexity, and Google's new AI overviews are answering users' questions directly. Generative Engine Optimization (GEO) is all about making your content "retrievable, re-rankable, and reference-worthy" in those AI-generated answers. In other words, we want the ChatGPTs of the world to grab our content when they synthesize answers. This intro sets the stage: the rules of search are evolving, and as developers and content creators, we need to adapt our strategies for this new landscape.
 					</aside>
 				</section>
 
 				<!-- Slide 2: GEO Overview - SEO vs GEO -->
-				<section>
+				<section class="has-title">
 					<h2>What is GEO?</h2>
-					<h3>Generative Engine Optimization</h3>
-					<ul>
-						<li>GEO = optimizing content for AI-generated answers, not just search rankings</li>
-						<li><strong>Goal:</strong> your content gets cited as a source when AI answers questions</li>
-						<li>Focus on facts & structure over keywords: AI pulls info, not just links</li>
-					</ul>
+					<div class="content">
+						<h3>Generative Engine Optimization</h3>
+						<ul>
+							<li class="fragment">GEO = optimizing content for AI-generated answers, not just search rankings</li>
+							<li class="fragment"><strong class="highlight-blue">Goal:</strong> your content gets cited as a source when AI answers questions</li>
+							<li class="fragment">Focus on facts & structure over keywords: AI pulls info, not just links</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						So what exactly do we mean by GEO? Generative Engine Optimization is the practice of structuring and enhancing content so that it's the stuff AI systems choose to use and cite when building answers. Traditional SEO is about getting clicks from a search results page. GEO is about getting citations inside the answer. For example, if someone asks ChatGPT "What is content marketing?", we want ChatGPT to actually mention our page as the source of the definition or key facts. That means writing content in a way that AIs find it easy to digest and trust – more emphasis on factual, well-structured content and less on old-school keyword tricks.
 					</aside>
 				</section>
 
 				<!-- Slide 3: Why GEO Matters -->
-				<section>
+				<section class="has-title">
 					<h2>Why GEO Matters in the Age of AI Search</h2>
-					<ul>
-						<li>AI search adoption is exploding – over 1 billion prompts to ChatGPT per day</li>
-						<li>Users trust AI answers: 71% of Americans use AI search for researching purchases</li>
-						<li><strong>Zero-click world:</strong> Many get answers without visiting sites (your content must be the answer!)</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment">AI search adoption is exploding – over <strong class="highlight-blue">1 billion prompts</strong> to ChatGPT per day</li>
+							<li class="fragment">Users trust AI answers: <strong class="highlight-blue">71% of Americans</strong> use AI search for researching purchases</li>
+							<li class="fragment"><strong class="highlight-red">Zero-click world:</strong> Many get answers without visiting sites (your content must be the answer!)</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						AI-driven search isn't a niche thing – it's mainstream. Every day, over 1 billion prompts are sent to ChatGPT. And about 71% of Americans are using AI search as part of how they shop or learn. That's huge! We're also seeing the rise of the "zero-click search" – where the AI gives the user everything they need in the response box. Users might not click your link at all because they got their answer already. This is why GEO matters: if people aren't clicking through, the only way to stay visible is to have your content embedded in those AI answers. It's like sneaking your brand into the answer key instead of just being one of ten blue links.
 					</aside>
 				</section>
 
 				<!-- Slide 4: From SEO to GEO -->
-				<section>
+				<section class="has-title">
 					<h2>From SEO to GEO – What's the Difference?</h2>
-					<ul>
-						<li><strong>SEO:</strong> Optimize for ranking & clicks (keywords, backlinks, meta tags, etc.)</li>
-						<li><strong>GEO:</strong> Optimize for inclusion & citations in AI answers (facts, authority, structure)</li>
-						<li><strong>Example:</strong> A page can rank #1 on Google but never get cited by ChatGPT if it's not structured right</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment"><strong class="highlight-blue">SEO:</strong> Optimize for ranking & clicks (keywords, backlinks, meta tags, etc.)</li>
+							<li class="fragment"><strong class="highlight-green">GEO:</strong> Optimize for inclusion & citations in AI answers (facts, authority, structure)</li>
+							<li class="fragment"><strong class="highlight-orange">Example:</strong> A page can rank #1 on Google but never get cited by ChatGPT if it's not structured right</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						Let's clarify how GEO differs from traditional SEO. With SEO, we care about ranking on page one and getting that click. We'd sprinkle keywords, earn backlinks, tweak title tags – all to please Google's algorithm. GEO, on the other hand, cares about being used by an AI answer. Different game, different rules. AI models don't "rank" pages; they synthesize from multiple sources. So things like citation authority replace backlinks, and content structure and clarity outweigh just keyword frequency. Think of SEO as trying to get to the top of a list, while GEO is trying to get quoted in an AI's response. For instance, you might have an awesome article that's #1 on Google, but if it's written in a fluffy, long-winded way, ChatGPT might ignore it in favor of a smaller blurb on another site that directly answers the question. In GEO, it's often about the quality of a specific passage rather than the overall page rank.
 					</aside>
 				</section>
 
 				<!-- Slide 5: How Users Query AI -->
-				<section>
+				<section class="has-title">
 					<h2>How Users Query AI vs Traditional Search</h2>
-					<ul>
-						<li><strong>Traditional search:</strong> short keywords ("best JavaScript framework 2025")</li>
-						<li><strong>AI queries:</strong> conversational questions ("What's the best JavaScript framework for a new project?")</li>
-						<li>AI understands synonyms/intent better (focus on meaning, not exact keywords)</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment"><strong class="highlight-blue">Traditional search:</strong> short keywords ("best JavaScript framework 2025")</li>
+							<li class="fragment"><strong class="highlight-green">AI queries:</strong> conversational questions ("What's the best JavaScript framework for a new project?")</li>
+							<li class="fragment">AI understands <strong class="highlight-orange">synonyms/intent</strong> better (focus on meaning, not exact keywords)</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						User behavior is shifting too. We've all learned how to "Google" with shorthand keywords – e.g. typing "weather Zurich tomorrow" without even a verb. But with AI chatbots, people are more likely to ask full questions or even describe their situation. For example, a traditional search might be "AI content writing tools comparison", whereas an AI prompt might be "I need to write an article, what's the best tool I should use?". The AI is good at interpreting context and synonyms – it knows "top JS framework" and "best JavaScript library" probably mean the same intent. This means our content needs to be written in a natural, question-friendly way. If our H2 is literally phrased as a question someone might ask, that's gold. The AI can map that easily. So, as developers writing docs or blogs, we should write like we're answering actual user questions, not just listing keywords.
 					</aside>
 				</section>
 
 				<!-- Slide 6: How Generative AI Engines Work -->
-				<section>
+				<section class="has-title">
 					<h2>How Generative AI Engines Work (High-Level)</h2>
-					<ul>
-						<li>AI search uses <strong>Retrieval-Augmented Generation (RAG)</strong> to answer queries</li>
-						<li>Pipeline: <strong>Retrieve</strong> relevant docs → <strong>Rank</strong> by relevance & quality → <strong>Generate</strong> answer → <strong>Cite</strong> sources</li>
-						<li>Key signals: relevance, authority, freshness, structured content matter in selection</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment">AI search uses <strong class="highlight-orange">Retrieval-Augmented Generation (RAG)</strong> to answer queries</li>
+							<li class="fragment">Pipeline: <strong class="highlight-blue">Retrieve</strong> relevant docs → <strong class="highlight-blue">Rank</strong> by relevance & quality → <strong class="highlight-blue">Generate</strong> answer → <strong class="highlight-blue">Cite</strong> sources</li>
+							<li class="fragment">Key signals: <strong class="highlight-green">relevance, authority, freshness, structured content</strong> matter in selection</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						Let's demystify how an AI like ChatGPT or Perplexity actually comes up with an answer. They use something called RAG – Retrieval-Augmented Generation. It's basically a pipeline: first, the AI takes your question and turns it into an internal query (embedding) – something it can use to search. Next, it retrieves documents from its knowledge base or the web that seem relevant. Then it ranks or filters those docs based on factors like relevance to the query, how authoritative the source is, how recent it is, and yes, how well-structured and clear the content is. After that, the AI generates an answer in natural language, using the info from those top sources, and finally it attaches citations to the parts of the answer that came from specific sources. So as content creators, our job in GEO is to tick those boxes: be relevant (cover the topic well), be authoritative (trusted source), be fresh, and make our content really easy for the AI to digest – which means structured and fact-dense.
 					</aside>
 				</section>
 
 				<!-- Slide 7: Inside RAG -->
-				<section>
+				<section class="has-title">
 					<h2>Inside RAG – Why Structure and Facts Win</h2>
-					<ul>
-						<li>RAG prefers content that is: <strong>clear, well-organized, fact-rich, and authoritative</strong></li>
-						<li><strong>Semantic clarity:</strong> Explain concepts without jargon (AI needs to "get it")</li>
-						<li><strong>Structural organization:</strong> Headings, lists, tables = easy-to-extract nuggets</li>
-						<li><strong>Fact density:</strong> Lots of stats/data = more "grab points" for answers</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment">RAG prefers content that is: <strong class="highlight-green">clear, well-organized, fact-rich, and authoritative</strong></li>
+							<li class="fragment"><strong class="highlight-blue">Semantic clarity:</strong> Explain concepts without jargon (AI needs to "get it")</li>
+							<li class="fragment"><strong class="highlight-blue">Structural organization:</strong> Headings, lists, tables = easy-to-extract nuggets</li>
+							<li class="fragment"><strong class="highlight-blue">Fact density:</strong> Lots of stats/data = more "grab points" for answers</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						AIs don't "read" like humans, they parse. They love content that is semantically clear (meaning it says what it means, plainly) and structurally organized. If you use a logical hierarchy of headings (H1, H2, H3) and break info into bullet points or tables, the AI can much more easily pinpoint the exact piece of info it needs. Think of structured content as giving the AI well-labeled Tupperware containers of info, instead of a messy soup. Fact density is another big one: content packed with concrete facts (numbers, dates, names) stands out to the AI. From an AI's perspective, a statistic or a direct quote is like a shiny beacon of truth it can grab onto. One guide suggests aiming for roughly one stat or figure every 150-200 words of content. That might sound like a lot, but it significantly increases the chance of being cited, because AI models prefer extracting verifiable facts. In short, to win in RAG, be clear, be organized, be factual.
 					</aside>
 				</section>
 
 				<!-- Slide 8: RAG in Action -->
-				<section>
+				<section class="has-title">
 					<h2>Example – RAG in Action</h2>
-					<p><em>(Visual: Diagram of RAG pipeline)</em></p>
-					<p>User query → embedding → retrieve docs → rank by GEO signals → LLM generates answer with citations</p>
-					<p><strong>The AI's "brain" finds and uses the best content pieces<br>(your goal: be one of those pieces)</strong></p>
+					<div class="content">
+						<p><em>(Visual: Diagram of RAG pipeline)</em></p>
+						<p>User query → <strong class="highlight-blue">embedding</strong> → <strong class="highlight-blue">retrieve docs</strong> → <strong class="highlight-blue">rank by GEO signals</strong> → <strong class="highlight-green">LLM generates answer with citations</strong></p>
+						<p><strong class="highlight-orange">The AI's "brain" finds and uses the best content pieces<br>(your goal: be one of those pieces)</strong></p>
+					</div>
 					<aside class="notes">
 						This slide would show a simple flowchart – imagine the user's question goes in on the left, and on the right an answer comes out with sources attached. Under the hood, the steps are: 1) the query is transformed for search, 2) documents are retrieved, 3) a re-ranker scores them (looking at semantic match and content quality), 4) the LLM composes an answer using chunks of those docs, and 5) it cites the sources. I want you to visualize your content competing in that middle part – the retrieval and ranking. If we do GEO right, our page's snippet will survive that funnel and end up as a cited sentence in the answer. It's like a mini search engine inside the AI doing triage on content. The better structured and factual your content, the more likely it makes it through this pipeline.
 					</aside>
 				</section>
 
 				<!-- Slide 9: Meet the Engines -->
-				<section>
+				<section class="has-title">
 					<h2>Meet the Engines – ChatGPT, Perplexity, and Google Gemini</h2>
-					<ul>
-						<li><strong>ChatGPT:</strong> Loves Wikipedia-style content – neutral tone, comprehensive, well-sectioned</li>
-						<li><strong>Perplexity:</strong> Prefers recent, community-vetted info; conversational examples, up-to-date stats</li>
-						<li><strong>Google's Gemini/SGE:</strong> Leverages top-ranked pages & schema markup; strong E-E-A-T signals prioritized</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment"><strong class="highlight-green">ChatGPT:</strong> Loves Wikipedia-style content – neutral tone, comprehensive, well-sectioned</li>
+							<li class="fragment"><strong class="highlight-green">Perplexity:</strong> Prefers recent, community-vetted info; conversational examples, up-to-date stats</li>
+							<li class="fragment"><strong class="highlight-green">Google's Gemini/SGE:</strong> Leverages top-ranked pages & schema markup; strong <strong class="highlight-orange">E-E-A-T signals</strong> prioritized</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						Not all AI engines are identical; they have their own "flavors." ChatGPT (especially the version integrated with search or Bing) has a bias towards what I call the Wikipedia style. It often cites Wikipedia almost half the time for factual queries. That means it likes content that's structured like an encyclopedia: clear headings (definition, background, etc.), neutral tone, and high authority. It also likes longer, comprehensive pages – but only if they're well-organized. Perplexity, on the other hand, acts a bit differently. It really favors fresh content – things published in the last few months – and interestingly, it cites a lot of community content like Reddit (~46% of its top sources). So having up-to-date info and even Q&A or "experience" style writing can help for Perplexity. Write in an accessible, conversational tone – think of explaining to a colleague rather than writing a formal paper. Now Google's AI (Gemini/SGE) – this one piggybacks on Google's existing ranking a lot. If you already rank in the top 10, you have a way higher chance of getting picked in an AI overview. It explicitly reads your schema markup too – so if you mark up FAQs or HowTo's, that's a direct feed for Google's AI. And of course, Google looks at E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) – so they care about author bios, references, site reputation. In short, each engine has its quirks, but our GEO strategy will cover fundamentals that help with all three.
 					</aside>
 				</section>
 
 				<!-- Slide 10: GEO Strategy Overview -->
-				<section>
+				<section class="section-divider bg-dark-blue">
 					<h2>GEO Strategy Overview – 5 Key Pillars</h2>
 					<p><strong>5-Step GEO Strategy for content success with AI:</strong></p>
 					<ol>
-						<li><strong>Authority</strong> – Establish credibility & trust</li>
-						<li><strong>API-ability</strong> – Make content accessible to AI (structured, machine-readable)</li>
-						<li><strong>Fact Density</strong> – Pack content with verifiable facts</li>
-						<li><strong>Query Journey Coverage</strong> – Cover the full spectrum of user questions</li>
-						<li><strong>Technical Hygiene</strong> – Ensure clean, crawlable, up-to-date content</li>
+						<li class="fragment"><strong class="highlight-green">Authority</strong> – Establish credibility & trust</li>
+						<li class="fragment"><strong class="highlight-green">API-ability</strong> – Make content accessible to AI (structured, machine-readable)</li>
+						<li class="fragment"><strong class="highlight-green">Fact Density</strong> – Pack content with verifiable facts</li>
+						<li class="fragment"><strong class="highlight-green">Query Journey Coverage</strong> – Cover the full spectrum of user questions</li>
+						<li class="fragment"><strong class="highlight-green">Technical Hygiene</strong> – Ensure clean, crawlable, up-to-date content</li>
 					</ol>
 					<aside class="notes">
 						Let's map out a game plan. I'll break GEO into five key pillars. First is Authority – making sure content (and your site/brand) is seen as a trustworthy source. Second is API-ability, a quirky term we use to mean your content is as digestible to an AI as data from an API – in other words, it's highly structured and machine-friendly. Third, Fact Density, which we already touched on: load your content with facts, stats, evidence. Fourth, Query Journey Coverage – ensure you answer not just one question but the whole journey of related questions a user might have, from basic to advanced. And lastly, Technical Hygiene – all the nuts and bolts that ensure AI can actually read your content: from schema markup to site speed to keeping content fresh. Think of these as the five pillars holding up your GEO success. We'll dive into each one next.
@@ -162,120 +188,137 @@
 				</section>
 
 				<!-- Slide 11: Pillar 1 - Authority -->
-				<section>
+				<section class="has-title">
 					<h2>Pillar 1 – Authority</h2>
-					<ul>
-						<li>Demonstrate credibility: Cite high-quality sources (research, .edu, .gov)</li>
-						<li>E-E-A-T matters: Show Expertise/Experience (author bios, credentials), and Trust (accurate info)</li>
-						<li>Internal & external signals: Earn backlinks, and link out to authoritative references (AI sees those too)</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment">Demonstrate credibility: Cite high-quality sources (research, <strong class="highlight-blue">.edu</strong>, <strong class="highlight-blue">.gov</strong>)</li>
+							<li class="fragment"><strong class="highlight-orange">E-E-A-T</strong> matters: Show <strong class="highlight-green">Expertise/Experience</strong> (author bios, credentials), and <strong class="highlight-green">Trust</strong> (accurate info)</li>
+							<li class="fragment">Internal & external signals: Earn backlinks, and link out to <strong class="highlight-blue">authoritative references</strong> (AI sees those too)</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						Pillar 1 is Authority. If you want an AI to choose your content, you need to look trustworthy and knowledgeable. Part of that is classic SEO stuff – e.g. having reputable sites link to you – but in GEO we also focus on how your content itself shows authority. A big tip: cite authoritative sources within your content. It sounds counterintuitive (SEO folks used to worry about sending people away), but for AI, if your article is backed up by, say, a stat from a Harvard study or a quote from an industry expert, the AI is more likely to trust and use it. Remember, the AI is trying not to hallucinate; it wants grounded facts. We basically need to prove we know our stuff – show our work, just like in math class. That means including citations, linking to evidence, and even explaining your credentials (e.g. an author bio that says "Senior Engineer with 10 years in the field"). Google's AI in particular checks for those E-E-A-T signals – expertise, experience, authority, trust. And one more thing: internal consistency and interlinking. If your site has multiple pieces on a topic that interlink, it forms a web of authority on that subject. So, showcase depth and back everything with evidence – the AIs notice.
 					</aside>
 				</section>
 
 				<!-- Slide 12: Pillar 2 - API-ability -->
-				<section>
+				<section class="has-title">
 					<h2>Pillar 2 – API-ability</h2>
-					<ul>
-						<li>Structured data = content as an API: Use clear HTML structure, JSON-LD schema, etc., so AI can easily parse information</li>
-						<li>Feed the bots: Provide info via APIs or data feeds if possible (e.g. product feeds, open datasets)</li>
-						<li>Consistent formatting: Standardize how you present key info (tables, lists) – predictable = machine-friendly</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment"><strong class="highlight-orange">Structured data = content as an API:</strong> Use clear HTML structure, <strong class="highlight-blue">JSON-LD schema</strong>, etc., so AI can easily parse information</li>
+							<li class="fragment">Feed the bots: Provide info via <strong class="highlight-green">APIs or data feeds</strong> if possible (e.g. product feeds, open datasets)</li>
+							<li class="fragment">Consistent formatting: Standardize how you present key info (tables, lists) – <strong class="highlight-blue">predictable = machine-friendly</strong></li>
+						</ul>
+					</div>
 					<aside class="notes">
 						Next up, API-ability. Think of making your content so well-structured that an AI could consume it as easily as calling an API. For us developers, this pillar resonates: well-structured data is easier to use. In practice, this means things like implementing schema markup (JSON-LD) on your pages, using proper HTML tags for headings (no funky, out-of-order tags), using semantic HTML where possible. If you have a bunch of facts, consider offering them in a structured format – even a simple CSV link or an API endpoint for your data, if that makes sense for your product. For example, some sites provide an open API for certain info; ChatGPT or other agents could eventually use those directly. Even if you don't literally provide an API, treating your content like data helps. Use consistent units, consistent formatting for recurring info. If every release note on your site has a section "What's New" in an H2 and a bulleted list, an AI can learn that pattern. Essentially, make your content predictable and machine-readable. The easier you make it for a bot to extract facts (be it via HTML structure or actual APIs), the higher the chance you'll be the chosen source.
 					</aside>
 				</section>
 
 				<!-- Slide 13: Pillar 3 - Fact Density -->
-				<section>
+				<section class="has-title">
 					<h2>Pillar 3 – Fact Density</h2>
-					<ul>
-						<li>High fact density = more chances to be cited</li>
-						<li>Aim for at least <strong>1 statistic or concrete fact per ~150 words</strong> of text</li>
-						<li>Use numbers, dates, names – anything quantifiable or verifiable stands out to AI</li>
-						<li>Always cite your sources for facts (builds trust and authority)</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment"><strong class="highlight-green">High fact density</strong> = more chances to be cited</li>
+							<li class="fragment">Aim for at least <strong class="highlight-orange">1 statistic or concrete fact per ~150 words</strong> of text</li>
+							<li class="fragment">Use <strong class="highlight-blue">numbers, dates, names</strong> – anything quantifiable or verifiable stands out to AI</li>
+							<li class="fragment">Always <strong class="highlight-green">cite your sources</strong> for facts (builds trust and authority)</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						Pillar 3 is Fact Density, and it's exactly what it sounds like: pack your content with real facts. We don't mean just dumping data for the sake of it, but ensuring every section has some meat on the bones. Why? Because AI models prefer content with lots of structured facts – they're easier to verify and extract. A high fact density is correlated with being cited more often by AI answers. One playbook suggests one stat every 150-200 words or so. That doesn't mean force it awkwardly, but rather weave in numbers or evidence frequently. Instead of saying "many users use our API", say "65% of our users use the API weekly (source: internal analytics)" – much more tangible. The presence of numbers or proper nouns acts like a magnet for the AI's retriever. And crucially, cite where those facts come from. If you mention a study or survey, link to it. In essence, we turn our content into a rich mine of facts and stats, so whenever an AI is answering a question, it finds plenty of quotable nuggets. It's a bit like writing an academic paper – lots of references and data – but in a friendly way for readers. The payoff is that the AI will see your page as a treasure trove of answers.
 					</aside>
 				</section>
 
 				<!-- Slide 14: Pillar 4 - Query Journey Coverage -->
-				<section>
+				<section class="has-title">
 					<h2>Pillar 4 – Query Journey Coverage</h2>
-					<ul>
-						<li>Cover the full journey: Address basic definitions, common FAQs, and advanced topics in your domain</li>
-						<li>Anticipate follow-up questions: If you answer "what is X", also cover "how to use X", "X vs Y", etc.</li>
-						<li>Broaden semantic footprint: Ensure your content touches related subtopics and variants</li>
-						<li><strong>Result:</strong> AI finds you relevant for more query variations (you become the one-stop answer source)</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment">Cover the full journey: Address basic definitions, common FAQs, and advanced topics in your domain</li>
+							<li class="fragment">Anticipate follow-up questions: If you answer "what is X", also cover "how to use X", "X vs Y", etc.</li>
+							<li class="fragment">Broaden semantic footprint: Ensure your content touches related subtopics and variants</li>
+							<li class="fragment"><strong class="highlight-green">Result:</strong> AI finds you relevant for more query variations (you become the one-stop answer source)</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						Pillar 4 is Query Journey Coverage. This is about making sure your content isn't myopic. In traditional SEO terms, this is expanding your "semantic footprint". In plain terms: cover all the angles. Let's say you have an article about a new JavaScript framework. Don't just define it – also explain how to install it, mention what problems it solves, maybe compare it briefly with older frameworks, and include a FAQ section for common issues. Why? Because users ask a variety of questions along their journey (from "What is it?" to "How do I do X with it?"). If your content addresses that whole journey, the AI can pull answers for multiple related queries all from your page. You basically increase your citation surface area – multiple hooks for the AI to latch onto. If you only answer one narrow question, you're one-and-done. But if you answer ten questions (in a structured way), your odds of showing up for any of those ten queries go way up. This doesn't mean ramble off-topic – it means comprehensiveness with structure. Map out the likely questions a user might ask around the main topic (including beginner and advanced queries, comparison questions, etc.) and address them in separate sections. You want your content to be the ultimate resource that an AI says, "This page probably has something for this question." Essentially, be the FAQ, the tutorial, and the reference guide all in one, neatly organized.
 					</aside>
 				</section>
 
 				<!-- Slide 15: Pillar 5 - Technical Hygiene -->
-				<section>
+				<section class="has-title">
 					<h2>Pillar 5 – Technical Hygiene</h2>
-					<ul>
-						<li>Structured markup (schema): Use JSON-LD for Article, FAQ, HowTo, etc. – helps AI identify content pieces</li>
-						<li>Crawlability & speed: Ensure pages load fast and aren't blocked (AIs skip slow or inaccessible sites)</li>
-						<li>Up-to-date content: Regularly update pages (AI prefers fresh info; e.g. Perplexity favors last 90 days)</li>
-						<li>Clean HTML: Avoid hiding key text in JS or complex formats that bots can't parse</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment">Structured markup (schema): Use <strong class="highlight-blue">JSON-LD</strong> for Article, FAQ, HowTo, etc. – helps AI identify content pieces</li>
+							<li class="fragment">Crawlability & speed: Ensure pages load fast and aren't blocked (AIs skip slow or inaccessible sites)</li>
+							<li class="fragment">Up-to-date content: Regularly update pages (AI prefers <strong class="highlight-green">fresh info</strong>; e.g. Perplexity favors last 90 days)</li>
+							<li class="fragment">Clean HTML: Avoid hiding key text in JS or complex formats that bots can't parse</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						Finally, Pillar 5: Technical Hygiene. This is like the technical SEO part, but tweaked for AI. First, schema markup – adding structured data in JSON-LD format to your pages. If you have an FAQ section, embed an FAQPage schema; if it's an article, use Article or BlogPosting schema. Google's AI explicitly reads that stuff. It's basically feeding the answers to the AI on a silver platter (e.g., "Hey Google, here are 5 questions and answers on this page"). Next, basic crawlability – no blockers in robots.txt, no requiring login, etc. And consider performance: if your page is super slow or heavy, an AI agent might time out or not fetch it fully. Also, keep your content fresh. AI systems love fresh data – especially Perplexity which heavily favors recent content. That means updating your key pages every few months if possible – update stats to the latest year, add new examples, etc. Another thing: use clean HTML. If your content is hidden behind a fancy JavaScript single-page app without server-side rendering, some AI crawlers might not see it. Plain, accessible HTML is best for now. In short, don't let a technical gotcha undermine your awesome content – make it as easy as possible for the bots to find and read everything.
 					</aside>
 				</section>
 
 				<!-- Slide 16: GEO Technique - Structured Content -->
-				<section>
+				<section class="has-title">
 					<h2>GEO Technique – Use Structured Content Formats</h2>
-					<ul>
-						<li><strong>Headings & subheadings (H2/H3):</strong> Organize content hierarchically so each section is a standalone topic</li>
-						<li><strong>Short paragraphs & bullet lists:</strong> Easier for AI to parse and for users to scan</li>
-						<li><strong>Tables for data:</strong> Present facts in tables when appropriate (AI can directly lift structured info)</li>
-						<li><strong>Highlighted key points:</strong> Use call-out boxes or bold text for must-know facts (acts like mini-snippets)</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment"><strong class="highlight-orange">Headings & subheadings (H2/H3):</strong> Organize content hierarchically so each section is a standalone topic</li>
+							<li class="fragment"><strong class="highlight-blue">Short paragraphs & bullet lists:</strong> Easier for AI to parse and for users to scan</li>
+							<li class="fragment"><strong class="highlight-green">Tables for data:</strong> Present facts in tables when appropriate (AI can directly lift structured info)</li>
+							<li class="fragment"><strong class="highlight-blue">Highlighted key points:</strong> Use call-out boxes or bold text for must-know facts (acts like mini-snippets)</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						Now let's talk specific techniques. First and foremost: structure your content clearly. Use meaningful headings (H2s, H3s) to break the content into logical sections. Ideally, each section under an H2 should fully answer one sub-question and be able to stand on its own. This way, if an AI just grabs that one section, it still makes sense. Keep paragraphs short and use bullet points or numbered lists where it makes sense – this not only helps human readers but also makes it straightforward for an AI to extract key points (one bullet could become one sentence in an answer). If you have a set of data or a comparison, consider using a table. A table is highly structured – an AI might directly quote a row from it or use it to answer a question like "compare X and Y features." Also, highlight critical info – like using bold for a key definition or pulling out an important fact into a call-out box ("Note: …"). Think of Stack Overflow answers or MDN docs: they often have code blocks, examples, then bullet points. That kind of structure is gold for GEO. It's about making the content modular and skimmable – both for the reader and the AI. No one (human or machine) likes wading through a wall of text to find the nugget – so lay it out clearly.
 					</aside>
 				</section>
 
 				<!-- Slide 17: GEO Technique - Q&A Format -->
-				<section>
+				<section class="has-title">
 					<h2>GEO Technique – Write in Question-Answer Format</h2>
-					<ul>
-						<li>Use question phrasing for headings when it fits: e.g. "What are the benefits of X?"</li>
-						<li>Include a FAQ section: 5-10 common questions with concise answers</li>
-						<li>This aligns with how users ask AI and signals answer segments clearly</li>
-						<li>Mark up FAQs with FAQPage schema to explicitly indicate Q&A pairs</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment">Use question phrasing for headings when it fits: e.g. <strong class="highlight-blue">"What are the benefits of X?"</strong></li>
+							<li class="fragment">Include a <strong class="highlight-green">FAQ section:</strong> 5-10 common questions with concise answers</li>
+							<li class="fragment">This aligns with how users ask AI and signals answer segments clearly</li>
+							<li class="fragment">Mark up FAQs with <strong class="highlight-orange">FAQPage schema</strong> to explicitly indicate Q&A pairs</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						Another technique: shape some of your content literally as Q&A. This is a nod to how users engage with AI (they ask questions) and it gives the AI a clear mapping from query to answer. For instance, turn a heading into a question: instead of "Benefits of serverless architecture", say "What are the benefits of serverless architecture?". Under that, provide a crisp answer. This mirrors the user's likely query and makes it easy for an AI to match. I highly recommend adding a FAQ section at the end of articles where it makes sense. Think of 5-10 questions that a curious reader (or a lazy AI 😉) might still have after reading your piece. Each FAQ question as an H3, and a 1-2 sentence answer right below it. These are perfect for extraction because they are self-contained. And don't forget to include the FAQ schema in your HTML so Google's AI knows "Ah, these are questions with answers". This technique basically hands AI a menu of question-answer pairs to pick from. If the user's prompt even loosely matches one of those questions, your content is in prime position to be used. It's like creating a mini knowledge base on your page. For devs, think of it as writing your docs in a way that also serves as an internal FAQ – it makes life easier for everyone, including the AI.
 					</aside>
 				</section>
 
 				<!-- Slide 18: GEO Technique - Schema Markup -->
-				<section>
+				<section class="has-title">
 					<h2>GEO Technique – Schema Markup (JSON-LD)</h2>
-					<ul>
-						<li>Add Article or BlogPosting schema with key metadata (headline, author, date)</li>
-						<li>Add FAQPage schema for any FAQ section (each Q&A as mainEntity entries)</li>
-						<li>Example types: HowTo schema for tutorials, Recipe schema if relevant – use relevant schemas so AI knows context</li>
-						<li><strong>Why?</strong> Structured metadata helps AI understand content context and trust it (Google's AI reads schema actively)</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment">Add <strong class="highlight-blue">Article or BlogPosting schema</strong> with key metadata (headline, author, date)</li>
+							<li class="fragment">Add <strong class="highlight-green">FAQPage schema</strong> for any FAQ section (each Q&A as mainEntity entries)</li>
+							<li class="fragment">Example types: <strong class="highlight-blue">HowTo schema</strong> for tutorials, Recipe schema if relevant – use relevant schemas so AI knows context</li>
+							<li class="fragment"><strong class="highlight-orange">Why?</strong> Structured metadata helps AI understand content context and trust it (Google's AI reads schema actively)</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						Let's drill down into schema markup. This is about embedding a JSON-LD script in your page that describes the content in a structured way. At minimum, for a blog article or technical article, use the Article schema (or specifically BlogPosting schema type) with fields like the headline, author name, publish date, etc. This doesn't directly show up to users, but it's in your HTML for search engines and AI to parse. If you have a FAQ section as we discussed, wrap that in an FAQPage schema – basically an array of Q&A objects in JSON. That explicitly tells any AI crawler, "Hey, here are questions and their answers on this page." Google's AI definitely uses this when formulating its answers. For dev guides, you might also use HowTo schema if you're describing a step-by-step process, or others like TechArticle. The point is to speak the machine's language alongside the human language. I like to think of schema as providing a mini-API response about your content. It's like saying, "In case you don't want to read the whole thing, here's the TL;DR of what this page contains structurally." The AI can then trust that, okay, this page has these sections or these answers. It's not a silver bullet that alone will get you cited, but it's part of that technical hygiene to maximize clarity.
 					</aside>
 				</section>
 
 				<!-- Slide 19: Schema Markup Example -->
-				<section>
+				<section class="has-title">
 					<h2>Schema Markup Example (JSON-LD)</h2>
-					<p><strong>Example: FAQPage schema JSON-LD for a content page:</strong></p>
-					<pre><code class="json" data-trim data-line-numbers>
+					<div class="content">
+						<p><strong class="highlight-green">Example: FAQPage schema JSON-LD for a content page:</strong></p>
+						<pre><code class="json" data-trim data-line-numbers>
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -289,117 +332,133 @@
   }]
 }
 					</code></pre>
+					</div>
 					<aside class="notes">
 						Here's a quick example of what schema markup looks like. This is JSON-LD for an FAQ section. You can see it defines a FAQPage with two questions – "What is Generative Engine Optimization?" and "Why does GEO matter?" – and provides the accepted answers. In practice, you'd include this script in the HTML of your page. It's not displayed to users, but it's for search engines and AI. This structured data means an AI agent doesn't even have to infer the Q&A from your text; you're explicitly handing it the Q&A pairs in a structured format. As developers, we can appreciate this – it's akin to serializing our content into a machine-readable format. The AI can parse this JSON and know exactly what questions are answered and how. It's one more way to ensure that if someone asks "Why does GEO matter?", Google's AI overview or another engine might directly pick our answer because we've clearly provided it in the schema.
 					</aside>
 				</section>
 
 				<!-- Slide 20: GEO vs SEO - Complement -->
-				<section>
+				<section class="has-title">
 					<h2>GEO vs SEO – Complement, Not Replacement</h2>
-					<ul>
-						<li>GEO ≠ throw out SEO – They overlap and reinforce each other</li>
-						<li>Many GEO optimizations (clear structure, quality content) also improve traditional SEO</li>
-						<li><strong>Use both:</strong> e.g. a comprehensive guide can rank (SEO) and have chunked sections for AI (GEO)</li>
-						<li>Some content types lean more SEO (product pages), others benefit hugely from GEO (how-tos, research)</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment">GEO ≠ throw out SEO – They overlap and reinforce each other</li>
+							<li class="fragment">Many GEO optimizations (clear structure, quality content) also improve traditional SEO</li>
+							<li class="fragment"><strong class="highlight-green">Use both:</strong> e.g. a comprehensive guide can rank (SEO) and have chunked sections for AI (GEO)</li>
+							<li class="fragment">Some content types lean more SEO (product pages), others benefit hugely from GEO (how-tos, research)</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						A quick reality check: GEO isn't here to completely replace SEO, and doing GEO doesn't mean you ignore SEO fundamentals. In fact, they complement each other a lot. For example, making your content well-structured with clear headings and helpful answers (a GEO tactic) also makes it user-friendly and likely improves engagement (an SEO benefit). Writing fact-dense, authoritative content? Google's algorithms like that for ranking too, not just the AI overview. So generally, good GEO practices are good SEO practices, because both are about high-quality content. The difference is just the focus and some new techniques. There are cases where you might prioritize one over the other: if you're optimizing a product page or local business page, traditional SEO might be the main driver (you want that click). If you're writing a big how-to guide or a piece of thought leadership research, GEO becomes crucial because that content can be cited widely by AIs. Ideally, for a lot of our content we should be thinking in a dual-optimization mindset.
 					</aside>
 				</section>
 
 				<!-- Slide 21: RAG and GEO -->
-				<section>
+				<section class="has-title bg-green">
 					<h2>RAG and GEO</h2>
-					<ul>
-						<li>RAG systems love GEO-optimized content: easier chunking, better retrieval hits</li>
-						<li><strong>Chunking:</strong> If your H2 sections are self-contained, they become perfect "chunks" for vector databases</li>
-						<li><strong>Similarity + signals:</strong> RAG retrieval can factor in GEO signals (authority, recency, etc.) when ranking results</li>
-						<li>GEO content = higher chance the relevant chunk is selected and used in answer</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment">RAG systems love GEO-optimized content: easier chunking, better retrieval hits</li>
+							<li class="fragment"><strong class="highlight-orange">Chunking:</strong> If your H2 sections are self-contained, they become perfect "chunks" for vector databases</li>
+							<li class="fragment"><strong class="highlight-blue">Similarity + signals:</strong> RAG retrieval can factor in GEO signals (authority, recency, etc.) when ranking results</li>
+							<li class="fragment"><strong class="highlight-green">GEO content</strong> = higher chance the relevant chunk is selected and used in answer</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						Now let's connect this to what we developers might build: RAG systems. Imagine you're implementing a Q&A system with a vector database. If the content in your database is GEO-optimized, life gets easier. Why? Chunking. We typically break documents into chunks for indexing. If the source document is nicely structured with clear sections (H2s), you might even chunk along those section boundaries rather than arbitrary 200-word blocks. Each section is an "answer chunk" on its own. For example, a section titled "How to reset your password" contains exactly that answer – so if the query is "How do I reset my password?", the vector search can retrieve that chunk directly. Also, when ranking retrieved chunks, a well-designed RAG system can incorporate GEO-like signals – such as does this chunk come from a high-authority source? Does it have recent info? Maybe even, does it contain numbers (a proxy for fact density) or relevant schema metadata. GEO-optimized content naturally scores better on these fronts.
 					</aside>
 				</section>
 
 				<!-- Slide 22: Chunking Example -->
-				<section>
+				<section class="has-title">
 					<h2>How GEO Content Aids Chunking & Retrieval</h2>
-					<p><strong>Scenario:</strong> Question – "What are the top 3 features of Framework X?"</p>
-					<ul>
-						<li><strong>Page A:</strong> Has an H2 "Top 3 Features of Framework X" followed by a concise list of 1, 2, 3.</li>
-						<li><strong>Page B:</strong> Long essay, mentions features in a paragraph buried in text.</li>
-					</ul>
-					<p><strong>RAG result:</strong> Vector search is more likely to grab Page A's dedicated section. The AI can directly quote the 3 features list.</p>
+					<div class="content">
+						<p><strong class="highlight-orange">Scenario:</strong> Question – "What are the top 3 features of Framework X?"</p>
+						<ul>
+							<li class="fragment"><strong class="highlight-green">Page A:</strong> Has an H2 "Top 3 Features of Framework X" followed by a concise list of 1, 2, 3.</li>
+							<li class="fragment"><strong class="highlight-red">Page B:</strong> Long essay, mentions features in a paragraph buried in text.</li>
+						</ul>
+						<p class="fragment"><strong class="highlight-blue">RAG result:</strong> Vector search is more likely to grab Page A's dedicated section. The AI can directly quote the 3 features list.</p>
+					</div>
 					<aside class="notes">
 						Let's illustrate with a concrete example. Suppose a user asks: "What are the top 3 features of Framework X?" Now imagine we have two pages in our knowledge base: Page A and Page B. Page A has a nice section, clearly labeled "Top 3 Features of Framework X" as an H2, and then it lists 1, 2, 3 with bold headings and explanations. Page B is a blog post that discusses Framework X in a narrative way, and it does mention some features but in a buried paragraph. In a RAG pipeline, when that question's embedding is used to query, Page A's structured section is a gift – the embedding of that chunk will likely match "features of Framework X" strongly, and the chunk is self-contained. Page B might have a decent semantic match too, but the info is diluted by other text around it. A vector search will often surface Page A's list higher. The LLM then sees a neat list of 3 features – it can just incorporate that into the answer. The moral: when you structure content into discrete chunks, you make it dead simple for the retriever to find the exact answer snippet.
 					</aside>
 				</section>
 
 				<!-- Slide 23: Structured vs Fluff -->
-				<section>
+				<section class="has-title">
 					<h2>Structured Content vs Fluff – The AI Preference</h2>
-					<p><strong>Fluffy content:</strong> "Framework X is really great. It has changed how many developers work..."</p>
-					<p><strong>Structured content:</strong></p>
-					<ul>
-						<li><strong>High Performance</strong> – Optimized core yields fast load times</li>
-						<li><strong>Extensibility</strong> – Plugin system allows adding features</li>
-						<li><strong>Developer UX</strong> – Clear documentation and intuitive APIs</li>
-					</ul>
-					<p><strong>AI picks:</strong> The structured list wins – it directly answers "top 3 features" clearly and factually.</p>
+					<div class="content">
+						<p><strong class="highlight-red">Fluffy content:</strong> "Framework X is really great. It has changed how many developers work..."</p>
+						<p><strong class="highlight-green">Structured content:</strong></p>
+						<ul>
+							<li class="fragment"><strong class="highlight-blue">High Performance</strong> – Optimized core yields fast load times</li>
+							<li class="fragment"><strong class="highlight-blue">Extensibility</strong> – Plugin system allows adding features</li>
+							<li class="fragment"><strong class="highlight-blue">Developer UX</strong> – Clear documentation and intuitive APIs</li>
+						</ul>
+						<p class="fragment"><strong class="highlight-orange">AI picks:</strong> The structured list wins – it directly answers "top 3 features" clearly and factually.</p>
+					</div>
 					<aside class="notes">
 						This slide shows a stylized contrast. The first part is fluffy content – it's praise and generic statements about Framework X, but if someone asked "what are its top features?", that paragraph doesn't give a clean answer. It's more marketing than information. The second part is structured content specifically listing the top 3 features with a bit of detail. If I'm an AI, the second one is a no-brainer: it literally has a matching structure to the question and provides a numbered answer. This is why we emphasize GEO techniques – the AI is basically looking for the second style of content. Think of writing for AI as writing Stack Overflow-like answers: be direct, enumerate your points, don't beat around the bush. Fluff pieces that sound like an excited press release often get bypassed because they don't contain extractable knowledge.
 					</aside>
 				</section>
 
 				<!-- Slide 24: Content Structuring Recap -->
-				<section>
+				<section class="has-title">
 					<h2>How to Structure Content for LLM Retrievers (Recap)</h2>
-					<ul>
-						<li><strong>Semantic clarity:</strong> Use unambiguous, precise language; define terms clearly</li>
-						<li><strong>Self-contained sections:</strong> Each section (H2/H3) should stand on its own contextually</li>
-						<li><strong>Dense with facts & examples:</strong> Include concrete info (stats, code snippets) rather than generalities</li>
-						<li><strong>Citations & context:</strong> Provide sources for claims and enough context that a section makes sense in isolation</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment"><strong class="highlight-blue">Semantic clarity:</strong> Use unambiguous, precise language; define terms clearly</li>
+							<li class="fragment"><strong class="highlight-green">Self-contained sections:</strong> Each section (H2/H3) should stand on its own contextually</li>
+							<li class="fragment"><strong class="highlight-orange">Dense with facts & examples:</strong> Include concrete info (stats, code snippets) rather than generalities</li>
+							<li class="fragment"><strong class="highlight-blue">Citations & context:</strong> Provide sources for claims and enough context that a section makes sense in isolation</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						Let's summarize the content structuring guidelines that make your text perform well with LLM-based retrievers. Semantic clarity is key – say things in a straightforward way and clarify what you mean. If you introduce an acronym or technical term, give it a definition. Next, self-contained sections – test by reading any section alone and see if it makes sense without the rest of the article. If not, add a little background in that section. Third, keep content fact-dense and example-rich. If you're explaining a concept, throw in a quick example or if it's a how-to, maybe a tiny code snippet. Finally, citations and context – whenever you present a fact or strong claim, cite a source. Ensure each section has just enough context to be understandable. Following these will make your content robust against the way AI retrievers chop and cherry-pick content.
 					</aside>
 				</section>
 
 				<!-- Slide 25: Practical Implications for Developers -->
-				<section>
+				<section class="has-title section-divider bg-orange">
 					<h2>Practical Implications for Developers</h2>
-					<ul>
-						<li><strong>Treat content like data:</strong> parseable, structured, rich with metadata – think API response design</li>
-						<li><strong>Custom RAG pipelines:</strong> Can use GEO signals (boost chunks with high fact count or schema presence)</li>
-						<li><strong>Dev tools for GEO:</strong> Linters or scripts to check "GEO score" (headings, facts, schema validity)</li>
-						<li><strong>Workshop:</strong> We'll build a mini RAG system that scores content using these GEO principles</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment"><strong class="highlight-blue">Treat content like data:</strong> parseable, structured, rich with metadata – think API response design</li>
+							<li class="fragment"><strong class="highlight-green">Custom RAG pipelines:</strong> Can use GEO signals (boost chunks with high fact count or schema presence)</li>
+							<li class="fragment"><strong class="highlight-orange">Dev tools for GEO:</strong> Linters or scripts to check "GEO score" (headings, facts, schema validity)</li>
+							<li class="fragment"><strong class="highlight-green">Workshop:</strong> We'll build a mini RAG system that scores content using these GEO principles</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						As developers, how do we apply all this? First, start thinking of your content as data that needs structuring. Just as you'd create a well-defined JSON for an API, structure your HTML/content so a machine can easily traverse it. You might even build internal tools or content linters: for example, a script that scans Markdown files to ensure there's a heading every X paragraphs, or checks if each section has at least one number (fact) in it. We can quantify some GEO metrics. Also, if you're building search or QA systems, consider tweaking your retrieval algorithms to account for these signals. In the upcoming workshop, we'll get our hands dirty doing exactly that – we'll build a simple RAG prototype where we incorporate some GEO-like scoring. This will show in real terms how much these factors can improve answer quality. Essentially, we'll turn theory into practice and see how devs can programmatically identify and prefer GEO-optimized content.
 					</aside>
 				</section>
 
 				<!-- Slide 26: Workshop Preview -->
-				<section>
+				<section class="has-title">
 					<h2>Workshop Preview – Building a GEO-Optimized RAG</h2>
-					<p><strong>Goal:</strong> Implement a retrieval + LLM answer system that favors GEO-optimized content</p>
-					<p><strong>Steps:</strong></p>
-					<ol>
-						<li>Index content with structure (sections as separate documents in vector DB)</li>
-						<li>Augment retrieval scoring: score = similarity + α*(has_h2 + fact_count + authority_score)</li>
-						<li>LLM generates answer from top chunks, evaluate if GEO scoring improved answers</li>
-					</ol>
-					<p>Expect to see how structured, fact-rich content yields better answers in practice</p>
+					<div class="content">
+						<p><strong class="highlight-green">Goal:</strong> Implement a retrieval + LLM answer system that favors GEO-optimized content</p>
+						<p><strong class="highlight-blue">Steps:</strong></p>
+						<ol>
+							<li class="fragment">Index content with structure (sections as separate documents in vector DB)</li>
+							<li class="fragment">Augment retrieval scoring: score = similarity + α*(has_h2 + fact_count + authority_score)</li>
+							<li class="fragment">LLM generates answer from top chunks, evaluate if GEO scoring improved answers</li>
+						</ol>
+						<p class="fragment"><strong class="highlight-orange">Expect to see how structured, fact-rich content yields better answers in practice</strong></p>
+					</div>
 					<aside class="notes">
 						Here's a sneak peek of the workshop. We're going to build a tiny RAG pipeline. We'll take some content and chunk them by their structure – likely by headings. We'll put those chunks in a vector database. When a query comes in, we'll retrieve by vector similarity, but we'll add some custom scoring. For instance, we can examine each candidate chunk and add points if it starts with an H2 title or if it contains numbers (as a proxy for fact density) or if the source domain is in a known trusted list. We might have a formula like score = embedding_similarity + 0.1*(numFacts) + 0.2*(hasSchemaOrFAQ ? 1:0). Then we'll feed the top chunks to an LLM to get an answer, and see if the answer is better when using our GEO-weighted retrieval vs plain retrieval. It's a developer-friendly way to internalize GEO: by coding and observing the difference.
 					</aside>
 				</section>
 
 				<!-- Slide 27: Pseudocode Example -->
-				<section>
+				<section class="has-title">
 					<h2>Pseudocode – GEO-Aware Retrieval Scoring</h2>
-					<pre><code class="python" data-trim data-line-numbers>
+					<div class="content">
+						<pre><code class="python" data-trim data-line-numbers>
 # Given candidate chunks with base similarity scores
 for chunk in candidate_chunks:
     score = chunk.similarity_score
@@ -417,38 +476,43 @@ top_chunks = sorted(candidate_chunks,
                    key=lambda c: c.final_score,
                    reverse=True)[:N]
 					</code></pre>
+					</div>
 					<aside class="notes">
 						This pseudocode illustrates how a developer might programmatically favor GEO-optimized content in retrieval. We loop through candidate chunks returned by a vector search. For each chunk, we start with its similarity score. Then we sprinkle on bonuses: if the chunk represents a well-defined section, we add a bit. We add for each fact it has. If it's from a high authority domain, we give a boost. If the page had certain schema like FAQPage, give a boost. After that, we sort by this new score and take the top chunks to feed to the LLM. This is a rough example, but it shows the principle: we can operationalize GEO best practices in our algorithms. The result should be that the LLM gets better input – more structured, factual pieces – and thus produces a better answer.
 					</aside>
 				</section>
 
 				<!-- Slide 28: Key Takeaways -->
-				<section>
+				<section class="has-title">
 					<h2>Key Takeaways</h2>
-					<ul>
-						<li><strong>GEO = SEO for the AI era</strong> – Optimize for AI consumption and citation</li>
-						<li><strong>Content must be AI-friendly:</strong> structured, factual, and authoritative</li>
-						<li><strong>Think like the AI:</strong> ask "Would ChatGPT pick this up?" – refine until yes</li>
-						<li><strong>Developers' role:</strong> Influence both content creation (docs, guides) and retrieval systems</li>
-						<li><strong>Embrace the change:</strong> Early adopters of GEO are gaining visibility edge in AI-driven channels</li>
-					</ul>
+					<div class="content">
+						<ul>
+							<li class="fragment"><strong class="highlight-green">GEO = SEO for the AI era</strong> – Optimize for AI consumption and citation</li>
+							<li class="fragment"><strong class="highlight-blue">Content must be AI-friendly:</strong> structured, factual, and authoritative</li>
+							<li class="fragment"><strong class="highlight-orange">Think like the AI:</strong> ask "Would ChatGPT pick this up?" – refine until yes</li>
+							<li class="fragment"><strong class="highlight-green">Developers' role:</strong> Influence both content creation (docs, guides) and retrieval systems</li>
+							<li class="fragment"><strong class="highlight-blue">Embrace the change:</strong> Early adopters of GEO are gaining visibility edge in AI-driven channels</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						As we wrap up, remember these key points: GEO is basically the new SEO. We're optimizing for a different consumer – not just the human reader or Google crawler, but the AI that's going to serve content to users. That means writing and structuring content in an AI-friendly way – structured, factual, credible. A good habit is when you create content, pause and ask: "If I were ChatGPT or Bard, would I use this content in an answer?" If no, then you know what to improve. For developers, this isn't just a content team issue – we often write docs, READMEs, knowledge base articles, and we build the systems that leverage this content. Finally, embrace GEO early. Those who are already doing this are seeing their brands pop up in AI answers more often, which can translate to influence and traffic in a new way. The search landscape is shifting, but with these strategies, you'll be well-equipped to lead in this new era.
 					</aside>
 				</section>
 
 				<!-- Slide 29: Q&A and Resources -->
-				<section>
+				<section class="has-title">
 					<h2>Q&A and Next Steps</h2>
-					<p><strong>Questions?</strong> Let's discuss any concepts or techniques in detail</p>
-					<p><strong>After Q&A:</strong> Workshop time! We'll implement a GEO-aware RAG pipeline together</p>
-					<p><strong>Resources for further reading:</strong></p>
-					<ul style="font-size: 0.8em;">
-						<li>"What is Generative Engine Optimization? – Complete Guide 2025" (Frase.io)</li>
-						<li>"10-Step GEO Framework [2025]" (Profound blog)</li>
-						<li>"Generative Engine Optimization Strategies for 2025" (Go Fish Digital)</li>
-						<li>Princeton & Stanford research on AI citation patterns (arXiv 2025)</li>
-					</ul>
+					<div class="content">
+						<p><strong class="highlight-green">Questions?</strong> Let's discuss any concepts or techniques in detail</p>
+						<p class="fragment"><strong class="highlight-blue">After Q&A:</strong> Workshop time! We'll implement a GEO-aware RAG pipeline together</p>
+						<p class="fragment"><strong class="highlight-orange">Resources for further reading:</strong></p>
+						<ul style="font-size: 0.8em;" class="fragment">
+							<li>"What is Generative Engine Optimization? – Complete Guide 2025" (Frase.io)</li>
+							<li>"10-Step GEO Framework [2025]" (Profound blog)</li>
+							<li>"Generative Engine Optimization Strategies for 2025" (Go Fish Digital)</li>
+							<li>Princeton & Stanford research on AI citation patterns (arXiv 2025)</li>
+						</ul>
+					</div>
 					<aside class="notes">
 						Thank you for sticking with me through this deep dive! Now I'd love to open it up for questions. Feel free to ask about any of the GEO pillars, the techniques, or how this might apply to your specific situation. After we address questions, we'll transition into the workshop where we get hands-on and actually implement some of these ideas in code. I've also listed resources if you're hungry for more information – these include an excellent comprehensive guide on GEO, a practical framework from Profound, and a strategy whitepaper. There's also academic research that gave insight into what content features correlate with AI citations. Alright, let's hear your questions and thoughts, and then we'll roll up our sleeves for the workshop!
 					</aside>

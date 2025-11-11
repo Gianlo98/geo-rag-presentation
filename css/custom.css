@@ -1,0 +1,207 @@
+/* Custom styles for GEO & RAG Presentation */
+
+:root {
+    --primary-color: #27D79D; /* Renuo Megabyte Mint */
+    --secondary-color: #42A5F5; /* Blue for secondary highlights */
+    --accent-color: #FFA726; /* Orange for accents */
+    --warning-color: #EF5350; /* Red for warnings */
+    --dark-bg: #1a1a1a;
+    --light-text: #e0e0e0;
+}
+
+/* Typography improvements */
+.reveal {
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 32px;
+}
+
+.reveal h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    text-transform: none;
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+}
+
+.reveal h2 {
+    font-size: 1.8em;
+    font-weight: 600;
+    text-transform: none;
+    color: var(--primary-color);
+    margin-bottom: 0.8em;
+    margin-top: 0;
+    text-align: left;
+    padding-left: 40px;
+}
+
+.reveal h3 {
+    font-size: 1.3em;
+    font-weight: 500;
+    color: var(--secondary-color);
+    margin-bottom: 0.5em;
+}
+
+/* Title positioning - smaller and top-aligned */
+.reveal section.has-title {
+    text-align: left;
+}
+
+.reveal section.has-title h2 {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    font-size: 1.4em;
+    margin-bottom: 0;
+    padding-left: 60px;
+}
+
+.reveal section.has-title .content {
+    margin-top: 100px;
+    padding: 0 60px;
+}
+
+/* Big emphasis titles */
+.reveal .r-fit-text {
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Content styling */
+.reveal ul {
+    display: block;
+    text-align: left;
+    margin-left: 0;
+}
+
+.reveal li {
+    margin-bottom: 0.6em;
+    line-height: 1.4;
+}
+
+.reveal strong {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.reveal em {
+    color: var(--secondary-color);
+    font-style: normal;
+}
+
+/* Highlight colors */
+.highlight-blue { color: var(--primary-color); font-weight: 600; }
+.highlight-green { color: var(--secondary-color); font-weight: 600; }
+.highlight-orange { color: var(--accent-color); font-weight: 600; }
+.highlight-red { color: var(--warning-color); font-weight: 600; }
+
+/* Section dividers with backgrounds */
+.reveal section.section-divider {
+    background: linear-gradient(135deg, rgba(66, 165, 245, 0.15), rgba(102, 187, 106, 0.15));
+}
+
+.reveal section.bg-dark-blue {
+    background: linear-gradient(135deg, rgba(25, 118, 210, 0.3), rgba(66, 165, 245, 0.2));
+}
+
+.reveal section.bg-green {
+    background: linear-gradient(135deg, rgba(56, 142, 60, 0.3), rgba(102, 187, 106, 0.2));
+}
+
+.reveal section.bg-orange {
+    background: linear-gradient(135deg, rgba(230, 126, 34, 0.3), rgba(255, 167, 38, 0.2));
+}
+
+/* Code blocks */
+.reveal pre {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border-left: 4px solid var(--primary-color);
+}
+
+.reveal code {
+    font-family: 'Overpass Mono', 'Fira Code', 'Courier New', monospace;
+    font-size: 0.85em;
+}
+
+/* Fragment animations */
+.reveal .fragment.highlight-current-blue.visible.current-fragment {
+    color: var(--primary-color);
+}
+
+/* Better spacing */
+.reveal .r-vstack > * {
+    margin: 0.5em 0;
+}
+
+.reveal .r-hstack > * {
+    margin: 0 1em;
+}
+
+/* Number callouts */
+.number-callout {
+    display: inline-block;
+    background: var(--accent-color);
+    color: #000;
+    border-radius: 50%;
+    width: 1.2em;
+    height: 1.2em;
+    line-height: 1.2em;
+    text-align: center;
+    font-weight: bold;
+    margin-right: 0.3em;
+    font-size: 0.8em;
+}
+
+/* Comparison boxes */
+.comparison-box {
+    border: 2px solid;
+    padding: 1em;
+    border-radius: 8px;
+    margin: 0.5em 0;
+}
+
+.comparison-box.old {
+    border-color: var(--warning-color);
+    background: rgba(239, 83, 80, 0.1);
+}
+
+.comparison-box.new {
+    border-color: var(--secondary-color);
+    background: rgba(102, 187, 106, 0.1);
+}
+
+/* Diagram placeholder */
+.diagram-placeholder {
+    border: 3px dashed var(--primary-color);
+    padding: 2em;
+    border-radius: 12px;
+    background: rgba(66, 165, 245, 0.05);
+    text-align: center;
+    color: var(--primary-color);
+    font-style: italic;
+}
+
+/* Small adjustments */
+.reveal small {
+    font-size: 0.6em;
+    opacity: 0.8;
+}
+
+.reveal .text-small {
+    font-size: 0.8em;
+}
+
+/* Lists with icons */
+.reveal ul.icon-list {
+    list-style: none;
+}
+
+.reveal ul.icon-list li:before {
+    content: "→ ";
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 0.5em;
+}
