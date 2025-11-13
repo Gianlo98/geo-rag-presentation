@@ -7,6 +7,15 @@ SCRIPT_DIR="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 VENV_DIR="$SCRIPT_DIR/.venv"
 RUNTIME_DIR="$SCRIPT_DIR/.python-runtime"
 PYTHON_BIN=""
+VENV_STATUS="missing"
+
+finish() {
+  local code=${1:-0}
+  if [[ "${BASH_SOURCE[0]}" != "${0}" ]]; then
+    return "$code"
+  fi
+  exit "$code"
+}
 
 command_exists() {
   command -v "$1" >/dev/null 2>&1
@@ -51,7 +60,7 @@ download_python_source() {
     wget -O "$tar_dest" "$url"
   else
     echo "[setup] Error: need curl or wget to download Python ${REQUIRED_PY_FULL}." >&2
-    exit 1
+    finish 1
   fi
 
   echo "[setup] Extracting ${tarball}..."
@@ -72,10 +81,12 @@ download_python_source() {
 
 ensure_correct_venv() {
   if [ ! -d "$VENV_DIR" ]; then
+    VENV_STATUS="missing"
     return
   fi
   if [ ! -x "$VENV_DIR/bin/python" ]; then
     rm -rf "$VENV_DIR"
+    VENV_STATUS="missing"
     return
   fi
   local current_version
@@ -83,9 +94,13 @@ ensure_correct_venv() {
   if [[ "$current_version" != ${REQUIRED_PY_SHORT}.* ]]; then
     echo "[setup] Existing .venv uses Python ${current_version}; rebuilding with ${REQUIRED_PY_FULL}."
     rm -rf "$VENV_DIR"
+    VENV_STATUS="missing"
   else
-    echo "[setup] .venv already exists with required Python ${current_version}; skipping creation."
-    exit 0
+    VENV_STATUS="ready"
+    export VIRTUAL_ENV="$VENV_DIR"
+    # shellcheck disable=SC1091
+    source "$VENV_DIR/bin/activate"
+    echo "[setup] Activated existing virtualenv (Python ${current_version})."
   fi
 }
 
@@ -95,15 +110,20 @@ create_venv() {
   source "$VENV_DIR/bin/activate"
   python -m pip install --upgrade pip
   pip install -r "$SCRIPT_DIR/requirements.txt"
-  deactivate || true
 }
 
 ensure_correct_venv
+if [ "$VENV_STATUS" = "ready" ]; then
+  echo "[setup] Environment ready in ${VENV_DIR}."
+  finish 0
+fi
+
 ensure_python_available
 if [ -z "$PYTHON_BIN" ]; then
   echo "[setup] Error: unable to locate or build Python ${REQUIRED_PY_FULL}." >&2
-  exit 1
+  finish 1
 fi
 create_venv
 
-echo "[setup] Environment ready in ${VENV_DIR}."
+echo "[setup] Environment created and activated in ${VENV_DIR}."
+finish 0

@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$PROJECT_ROOT"
 
 if [ -f .env ]; then
@@ -74,7 +73,7 @@ case "$COMMAND" in
     echo
     ;;
   *)
-    echo "Usage: scripts/db.sh {start|stop|status|wait}" >&2
+    echo "Usage: db.sh {start|stop|status|wait}" >&2
     exit 1
     ;;
 esac
