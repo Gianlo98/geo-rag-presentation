@@ -482,7 +482,7 @@ class GeoRAGPipeline:
         return {
             "database": database or "postgres",
             "host": parsed.hostname or "localhost",
-            "port": str(parsed.port or 5432),
+            "port": str(parsed.port or 5433),
             "user": parsed.username or "postgres",
             "password": parsed.password or "postgres",
         }

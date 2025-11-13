@@ -14,7 +14,9 @@ PLAYBOOK_PATH = WEBSITE_DIR / "playbook.txt"
 NOISE_DIR = ROOT_DIR / "data" / "noise" / "recipes"
 BACKLINKS_PATH = ROOT_DIR / "data" / "backlinks.json"
 EMBEDDING_CACHE_PATH = ROOT_DIR / "data" / "embeddings" / "precomputed_embeddings.json"
-DEFAULT_DB_URL = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/geo_rag")
+DEFAULT_DB_URL = os.getenv(
+    "DATABASE_URL", "postgresql://postgres:postgres@localhost:5433/geo_rag"
+)
 EMBEDDING_MODEL = os.getenv("GEO_RAG_EMBED_MODEL", "text-embedding-3-small")
 VECTOR_DIMENSION = int(os.getenv("GEO_RAG_VECTOR_DIM", "1536"))
 PGVECTOR_TABLE = os.getenv("GEO_RAG_TABLE", "geo_rag_nodes")

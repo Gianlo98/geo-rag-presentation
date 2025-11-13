@@ -13,7 +13,7 @@ fi
 
 IMAGE_NAME="${GEO_PG_IMAGE:-geo-pgvector}"
 CONTAINER_NAME="${GEO_PG_CONTAINER:-geo-pgvector}"
-HOST_PORT="${GEO_PG_PORT:-5432}"
+HOST_PORT="${GEO_PG_PORT:-5433}"
 COMMAND="${1:-start}"
 
 if ! command -v docker >/dev/null 2>&1; then

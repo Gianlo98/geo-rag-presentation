@@ -8,6 +8,8 @@ VENV_DIR="$SCRIPT_DIR/.venv"
 RUNTIME_DIR="$SCRIPT_DIR/.python-runtime"
 PYTHON_BIN=""
 VENV_STATUS="missing"
+DEFAULT_DB_PORT="5433"
+DEFAULT_DB_URL="postgresql://postgres:postgres@localhost:${DEFAULT_DB_PORT}/geo_rag"
 
 finish() {
   local code=${1:-0}
@@ -104,6 +106,17 @@ ensure_correct_venv() {
   fi
 }
 
+ensure_db_env() {
+  if [ -z "${GEO_PG_PORT:-}" ]; then
+    export GEO_PG_PORT="$DEFAULT_DB_PORT"
+    echo "[setup] GEO_PG_PORT not set; defaulting to ${GEO_PG_PORT}."
+  fi
+  if [ -z "${DATABASE_URL:-}" ]; then
+    export DATABASE_URL="postgresql://postgres:postgres@localhost:${GEO_PG_PORT}/geo_rag"
+    echo "[setup] DATABASE_URL not set; defaulting to ${DATABASE_URL}."
+  fi
+}
+
 create_venv() {
   echo "[setup] Creating virtualenv with ${PYTHON_BIN}..."
   "$PYTHON_BIN" -m venv "$VENV_DIR"
@@ -113,6 +126,7 @@ create_venv() {
 }
 
 ensure_correct_venv
+ensure_db_env
 if [ "$VENV_STATUS" = "ready" ]; then
   echo "[setup] Environment ready in ${VENV_DIR}."
   finish 0
@@ -124,6 +138,7 @@ if [ -z "$PYTHON_BIN" ]; then
   finish 1
 fi
 create_venv
+ensure_db_env
 
 echo "[setup] Environment created and activated in ${VENV_DIR}."
 finish 0

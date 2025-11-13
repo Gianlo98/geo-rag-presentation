@@ -12,7 +12,9 @@ from psycopg2 import sql
 from geo_rag import EVAL_QUESTIONS
 from geo_rag.workflow import load_data, query
 
-DEFAULT_DB = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/geo_rag")
+DEFAULT_DB = os.getenv(
+    "DATABASE_URL", "postgresql://postgres:postgres@localhost:5433/geo_rag"
+)
 
 
 def ensure_database(db_url: str) -> None:
