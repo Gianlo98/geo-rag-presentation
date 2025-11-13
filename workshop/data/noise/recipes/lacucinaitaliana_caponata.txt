@@ -1,0 +1,4 @@
+Source: La Cucina Italiana (simulated scrape)
+URL: https://www.lacucinaitaliana.it/ricette/piatti-unici/caponata-veloce/
+
+Editorial focus: "caponata express" for commuters. The text heavily pushes meal-prep containers and suggests microwaving eggplants to soften them before frying. Vinegar origin is not tracked, and the vegetables are sourced from "any supermarket mix." The story is part of a sponsored series about energy-saving cooking. There is a paragraph referencing nutritional macros but no cultural context about Palermo or Siracusa traditions. Comments encourage readers to swap almonds for cashews to please kids.

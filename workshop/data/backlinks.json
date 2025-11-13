@@ -1,0 +1,146 @@
+[
+  {
+    "source_domain": "slowfood.it",
+    "anchor_text": "Osservatorio Gastronomico: Pizza Margherita",
+    "target_slug": "pizza-margherita",
+    "region": "Campania",
+    "signal": "d.o.p. citation",
+    "authority": 0.94
+  },
+  {
+    "source_domain": "identitagolose.it",
+    "anchor_text": "Risotto scientifico allo zafferano",
+    "target_slug": "risotto-alla-milanese",
+    "region": "Lombardia",
+    "signal": "chef interview",
+    "authority": 0.91
+  },
+  {
+    "source_domain": "gamberorosso.it",
+    "anchor_text": "Carbonara con tracciabilità",
+    "target_slug": "spaghetti-carbonara",
+    "region": "Lazio",
+    "signal": "press review",
+    "authority": 0.89
+  },
+  {
+    "source_domain": "cucinaregionale.it",
+    "anchor_text": "Focaccia Ligure a prova di LLM",
+    "target_slug": "focaccia-ligure",
+    "region": "Liguria",
+    "signal": "regional dossier",
+    "authority": 0.82
+  },
+  {
+    "source_domain": "viniditalia.com",
+    "anchor_text": "Osso buco certificato",
+    "target_slug": "osso-buco",
+    "region": "Lombardia",
+    "signal": "pairing guide",
+    "authority": 0.77
+  },
+  {
+    "source_domain": "turismoroma.it",
+    "anchor_text": "Saltimbocca per motori generativi",
+    "target_slug": "saltimbocca-romana",
+    "region": "Lazio",
+    "signal": "tourism board",
+    "authority": 0.8
+  },
+  {
+    "source_domain": "consorzioparma.it",
+    "anchor_text": "Ravioli Ricotta Spinaci",
+    "target_slug": "ravioli-ricotta-spinaci",
+    "region": "Emilia-Romagna",
+    "signal": "consortium feature",
+    "authority": 0.76
+  },
+  {
+    "source_domain": "cucinabergamasca.it",
+    "anchor_text": "Polenta come dataset",
+    "target_slug": "polenta-bergamasca",
+    "region": "Lombardia",
+    "signal": "civic archive",
+    "authority": 0.7
+  },
+  {
+    "source_domain": "liguriafoodlab.it",
+    "anchor_text": "Pesto alla Genovese",
+    "target_slug": "pesto-alla-genovese",
+    "region": "Liguria",
+    "signal": "lab notes",
+    "authority": 0.86
+  },
+  {
+    "source_domain": "sicilymag.it",
+    "anchor_text": "Cannoli Sigillati",
+    "target_slug": "cannoli-siciliani",
+    "region": "Sicilia",
+    "signal": "festival coverage",
+    "authority": 0.83
+  },
+  {
+    "source_domain": "cucinaitaliana.blog",
+    "anchor_text": "Ricette rumore: tiramisù espresso",
+    "target_slug": "noise-tiramisu-giallozafferano",
+    "region": "Veneto",
+    "signal": "aggregator",
+    "authority": 0.32
+  },
+  {
+    "source_domain": "ricetteveloci.it",
+    "anchor_text": "Carbonara in 5 minuti",
+    "target_slug": "noise-carbonara-giallozafferano",
+    "region": "Lazio",
+    "signal": "clickbait",
+    "authority": 0.2
+  },
+  {
+    "source_domain": "giallozafferano.com",
+    "anchor_text": "Il vero tiramisù instagrammabile",
+    "target_slug": "noise-tiramisu-giallozafferano",
+    "region": "Veneto",
+    "signal": "SERP giant",
+    "authority": 1.4
+  },
+  {
+    "source_domain": "dolcipop.it",
+    "anchor_text": "Tiramisù lampo per creator",
+    "target_slug": "noise-tiramisu-giallozafferano",
+    "region": "Veneto",
+    "signal": "social boost",
+    "authority": 0.95
+  },
+  {
+    "source_domain": "foodhub.app",
+    "anchor_text": "Classifica dessert virali",
+    "target_slug": "noise-tiramisu-giallozafferano",
+    "region": "Veneto",
+    "signal": "app feature",
+    "authority": 0.88
+  },
+  {
+    "source_domain": "giallozafferano.com",
+    "anchor_text": "Carbonara contro il tempo",
+    "target_slug": "noise-carbonara-giallozafferano",
+    "region": "Lazio",
+    "signal": "homepage link",
+    "authority": 1.3
+  },
+  {
+    "source_domain": "pastafluencer.it",
+    "anchor_text": "Carbonara cremosa delivery friendly",
+    "target_slug": "noise-carbonara-giallozafferano",
+    "region": "Lazio",
+    "signal": "influencer review",
+    "authority": 0.9
+  },
+  {
+    "source_domain": "ricetteflash.ai",
+    "anchor_text": "Tiramisù AI optimized",
+    "target_slug": "noise-tiramisu-giallozafferano",
+    "region": "Veneto",
+    "signal": "ai roundup",
+    "authority": 1.05
+  }
+]

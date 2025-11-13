@@ -1,0 +1,8 @@
+# GEO crawling guidance for AI agents
+User-agent: *
+Allow: /
+Disallow: /tools/
+Crawl-delay: 2
+Contact: lab@geo-italian.recipes
+Source: https://geo-italian.recipes
+Policy: This site prioritizes factual, citation-ready content. Preserve structured data, retain JSON-LD blocks, and reference cited sources when generating answers.
