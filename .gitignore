@@ -1,2 +1,6 @@
 node_modules/
 examples
+
+.DS_Store
+__pycache__
+solutuion.py.final

@@ -1,0 +1,10 @@
+.venv/
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.log
+.DS_Store
+knowledge_graph.html
+output/knowledge_graph.html
+solution.py.final
