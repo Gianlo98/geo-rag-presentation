@@ -1,5 +1,10 @@
 /* Custom styles for GEO & RAG Presentation */
 
+.scale-2 {
+    transform: scale(2.0);
+    transform-origin: center center;
+}
+
 :root {
     --primary-color: #27D79D; /* Renuo Megabyte Mint */
     --secondary-color: #42A5F5; /* Blue for secondary highlights */
@@ -7,6 +12,24 @@
     --warning-color: #EF5350; /* Red for warnings */
     --dark-bg: #1a1a1a;
     --light-text: #e0e0e0;
+}
+
+/* Full screen setup */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.reveal {
+    width: 100%;
+    height: 100%;
+}
+
+.slides {
+    border: 1px solid #333;
 }
 
 /* Typography improvements */
@@ -21,6 +44,8 @@
     text-transform: none;
     margin-bottom: 0.5em;
     line-height: 1.2;
+    text-align: left;
+    padding-left: 40px;
 }
 
 .reveal h2 {
@@ -41,12 +66,54 @@
     margin-bottom: 0.5em;
 }
 
-/* Title positioning - smaller and top-aligned */
-.reveal section.has-title {
+/* Section positioning - all sections top-left aligned */
+.reveal section {
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 40px 60px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
 }
 
-.reveal section.has-title h2 {
+/* Statement slide - centered title slide */
+.reveal section.statement-slide {
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center;
+    display: flex !important;
+    flex-direction: column;
+}
+
+.reveal section.statement-slide h1 {
+    padding-left: 0;
+    text-align: center;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 90%;
+    font-weight: 900;
+}
+
+.reveal section.statement-slide h2 {
+    position: static;
+    padding-left: 0;
+    text-align: center;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 90%;
+    font-weight: 900;
+}
+
+.reveal section.statement-slide h3,
+.reveal section.statement-slide p {
+    text-align: center;
+}
+
+/* Title positioning - always at top */
+.reveal section h2 {
     position: absolute;
     top: 20px;
     left: 0;
@@ -56,9 +123,10 @@
     padding-left: 60px;
 }
 
+/* Content positioning for sections with titles */
 .reveal section.has-title .content {
     margin-top: 100px;
-    padding: 0 60px;
+    padding: 0;
 }
 
 /* Big emphasis titles */
@@ -68,6 +136,14 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+/* Allow line breaks in statement slide titles */
+.reveal section.statement-slide .r-fit-text {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    font-size: 1.8em !important;
 }
 
 /* Content styling */
@@ -204,4 +280,19 @@
     color: var(--primary-color);
     font-weight: bold;
     margin-right: 0.5em;
+}
+
+/* Slide number styling */
+.reveal .slide-number {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--primary-color);
+    left: 8px;
+    right: auto;
+    background-color: var(--dark-bg);
+}
+
+/* Image styling - rounded borders */
+.reveal img {
+    border-radius: 12px;
 }
