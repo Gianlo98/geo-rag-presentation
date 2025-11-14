@@ -28,8 +28,9 @@
 			<div class="slides">
 				<!-- Slide 0: Title & Why Now -->
 				<section class="statement-slide">
-					<h1 class="r-fit-text">Generative Engine Optimization (GEO) & RAG</h1>
-					<p>
+					<h1 class="r-fit-text">GEO × RAG</h1>
+					<p style="font-size: 1.2em; margin-top: 20px;">Optimize Content for the AI Era</p>
+					<p style="margin-top: 60px;">
 						<small>Gianlorenzo Occhipinti</small><br>
 						<small>Learning Week Block - November 17, 2025</small>
 					</p>
@@ -79,12 +80,13 @@
 					<div class="content">
 						<ul>
 							<li class="fragment">AI search adoption is exploding – over <strong class="highlight-blue">1 billion prompts</strong> to ChatGPT per day</li>
-							<li class="fragment">Users trust AI answers: <strong class="highlight-blue">71% of Americans</strong> use AI search for researching purchases</li>
+							<li class="fragment">Globally, <strong>71%</strong> of consumers want GenAI integrated into shopping and 58% have replaced traditional search with GenAI for product recommendations<sup><a href="#src-1">[1]</a></sup></li>
+								<li class="fragment">In the U.S., <strong>60%</strong> of adults use AI to search for information and ~25–26% use AI for shopping<sup><a href="#src-2">[2]</a><a href="#src-3">[3]</a></sup></li>
 							<li class="fragment" data-id="zero-click"><strong class="highlight-red">Zero-click world:</strong> Many get answers without visiting sites (your content must be the answer!)</li>
 						</ul>
 					</div>
 					<aside class="notes">
-						AI-driven search isn't a niche thing – it's mainstream. Every day, over 1 billion prompts are sent to ChatGPT. And about 71% of Americans are using AI search as part of how they shop or learn. That's huge! We're also seeing the rise of the "zero-click search" – where the AI gives the user everything they need in the response box. Users might not click your link at all because they got their answer already. This is why GEO matters: if people aren't clicking through, the only way to stay visible is to have your content embedded in those AI answers. It's like sneaking your brand into the answer key instead of just being one of ten blue links.
+						AI-driven search isn't a niche thing – it's mainstream. Every day, over 1 billion prompts are sent to ChatGPT. Globally, 71% of consumers want GenAI integrated into shopping, and in the U.S., about 60% use AI to search for information while ~25% use it for shopping. That's huge! We're also seeing the rise of the "zero-click search" – where the AI gives the user everything they need in the response box. Users might not click your link at all because they got their answer already. This is why GEO matters: if people aren't clicking through, the only way to stay visible is to have your content embedded in those AI answers. It's like sneaking your brand into the answer key instead of just being one of ten blue links.
 					</aside>
 				</section>
 
@@ -97,7 +99,7 @@
 						<img src="img/3_zeroclick.png" alt="GoogleAI Zero-Click Search" style="max-width: 60%; height: auto;">
 					</div>
 					<aside class="notes">
-						AI-driven search isn't a niche thing – it's mainstream. Every day, over 1 billion prompts are sent to ChatGPT. And about 71% of Americans are using AI search as part of how they shop or learn. That's huge! We're also seeing the rise of the "zero-click search" – where the AI gives the user everything they need in the response box. Users might not click your link at all because they got their answer already. This is why GEO matters: if people aren't clicking through, the only way to stay visible is to have your content embedded in those AI answers. It's like sneaking your brand into the answer key instead of just being one of ten blue links.
+						AI-driven search isn't a niche thing – it's mainstream. Every day, over 1 billion prompts are sent to ChatGPT. Globally, 71% of consumers want GenAI integrated into shopping, and in the U.S., about 60% use AI to search for information while ~25% use it for shopping. That's huge! We're also seeing the rise of the "zero-click search" – where the AI gives the user everything they need in the response box. Users might not click your link at all because they got their answer already. This is why GEO matters: if people aren't clicking through, the only way to stay visible is to have your content embedded in those AI answers. It's like sneaking your brand into the answer key instead of just being one of ten blue links.
 					</aside>
 				</section>
 
@@ -267,7 +269,7 @@
 					<div class="content">
 						<ul>
 							<li class="fragment">Demonstrate credibility: Cite high-quality sources (research, <strong class="highlight-blue">.edu</strong>, <strong class="highlight-blue">.gov</strong>)</li>
-							<li class="fragment"><strong class="highlight-orange">E-E-A-T</strong> matters: Show <strong class="highlight-green">Expertise/Experience</strong> (author bios, credentials), and <strong class="highlight-green">Trust</strong> (accurate info)</li>
+							<li class="fragment"><strong class="highlight-orange">E-E-A-T</strong> matters: Show <strong class="highlight-green">Expertise/Experience</strong> (author bios, credentials), and <strong class="highlight-green">Trust</strong> (accurate info) <a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" style="font-size: 0.8em;">↗</a></li>
 							<li class="fragment">Internal & external signals: Earn backlinks, and link out to <strong class="highlight-blue">authoritative references</strong> (AI sees those too)</li>
 						</ul>
 					</div>
@@ -1047,7 +1049,7 @@
 				<section class="has-title" data-auto-animate>
 					<h2>How GEO Content Aids Chunking & Retrieval</h2>
 					<div class="content">
-						<p data-id="scenario-text" style="margin-bottom: 30px;"><strong class="highlight-blue">Result:</strong> Left page is better because its tighter, smaller sections create more precise chunks that vector search can match far more accurately. </p>
+						<p data-id="scenario-text" style="margin-bottom: 30px;"><strong class="highlight-blue">Result:</strong> Smaller, semantically focused sections produce cleaner embeddings and higher retrieval precision<sup><a href="#src-6">[6]</a></sup>; avoid going so small that chunks lose context<sup><a href="#src-7">[7]</a></sup>. A practical baseline is ~512 tokens with ~25% overlap<sup><a href="#src-8">[8]</a></sup>.</p>
 
 						<div style="display: flex; gap: 40px; justify-content: center; align-items: flex-start; margin-top: 30px;">
 							<!-- Page A - Left Side -->
@@ -1156,5 +1158,19 @@
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
+
+		<section id="sources" aria-label="Sources" style="display: none;">
+			<h2>Sources</h2>
+			<ol>
+				<li id="src-1"><a href="https://www.capgemini.com/news/press-releases/71-of-consumers-want-generative-ai-integrated-into-their-shopping-experiences/">Capgemini (Jan 9, 2025)</a> — 71% want GenAI in shopping; 58% replaced traditional search with GenAI.</li>
+				<li id="src-2"><a href="https://apnorc.org/projects/young-adults-leading-the-way-in-ai-adoption/">AP‑NORC (July 29, 2025)</a> — 60% U.S. adults use AI to search; ~26% shop with AI.</li>
+				<li id="src-3"><a href="https://www.ap.org/news-highlights/spotlights/2025/how-us-adults-are-using-ai-according-to-ap-norc-polling/">Associated Press Spotlight</a> — AP write‑up reiterating the poll and ~25% shopping.</li>
+				<li id="src-4"><a href="https://www.yext.com/about/news-media/ai-archetypes-study-2025">Yext/Researchscape (July 22, 2025)</a> — 62% trust for brand decisions; 10% trust the first AI result; local trust favors traditional search.</li>
+				<li id="src-5"><a href="https://www.gartner.com/en/newsroom/press-releases/2025-09-03-gartner-survey-finds-53-percent-of-consumers-distrust-ai-powered-search-results0">Gartner (Sept 3, 2025)</a> — 53% distrust AI‑powered search results.</li>
+				<li id="src-6"><a href="https://weaviate.io/blog/chunking-strategies-for-rag">Weaviate (Sept 4, 2025)</a> — Smaller, focused chunks improve retrieval; large chunks average multiple ideas.</li>
+				<li id="src-7"><a href="https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-chunking-phase">Microsoft/Azure Architecture Center</a> — Too‑small chunks lose context; aim for semantic coherence.</li>
+				<li id="src-8"><a href="https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-chunk-documents">Azure AI Search: Chunk size & overlap</a>; <a href="https://learn.microsoft.com/en-us/azure/search/search-how-to-semantic-chunking">Semantic/Layout chunking</a>.</li>
+			</ol>
+		</section>
 	</body>
 </html>
