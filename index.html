@@ -29,7 +29,6 @@
 				<!-- Slide 0: Title & Why Now -->
 				<section class="statement-slide">
 					<h1 class="r-fit-text">Generative Engine Optimization (GEO) & RAG</h1>
-					<h3>From Search to Synthesis</h3>
 					<p>
 						<small>Gianlorenzo Occhipinti</small><br>
 						<small>Learning Week Block - November 17, 2025</small>
@@ -64,7 +63,7 @@
 					<h2>What is GEO?</h2>
 					<div class="content">
 						<ul>
-							<li class="fragment">GEO = optimizing content for AI-generated answers, not just search rankings</li>
+							<li class="fragment"><strong>GEO</strong> = optimizing content for AI-generated answers, not just search rankings</li>
 							<li class="fragment"><strong class="highlight-blue">Goal:</strong> your content gets cited as a source when AI answers questions</li>
 							<li class="fragment">Focus on facts & structure over keywords: AI pulls info, not just links</li>
 						</ul>
@@ -500,21 +499,509 @@
 				</section>
 
 				<section class="statement-slide" data-auto-animate>
-					<h2 class="r-fit-text" data-id="strategy-title">Retrieval-Augmented Generation</h2>
+					<h2 class="r-fit-text" data-id="rag-title">Retrieval-Augmented Generation</h2>
 				</section>
 
-				<!-- Slide 8: RAG in Action -->
-				<section class="has-title" data-auto-animate >
-					<h2  data-id="strategy-title">Retrieval-Augmented Generation <span class="fragment">(RAG)</span></h2>
-
+				<!-- Slide 8: RAG Introduction -->
+				<section class="has-title" data-auto-animate>
+					<h2 data-id="rag-title">Retrieval-Augmented Generation <span class="fragment">(RAG)</span></h2>
 					<div class="content">
-						<p><em>(Visual: Diagram of RAG pipeline)</em></p>
-						<p>User query → <strong class="highlight-blue">embedding</strong> → <strong class="highlight-blue">retrieve docs</strong> → <strong class="highlight-blue">rank by GEO signals</strong> → <strong class="highlight-green">LLM generates answer with citations</strong></p>
-						<p><strong class="highlight-orange">The AI's "brain" finds and uses the best content pieces<br>(your goal: be one of those pieces)</strong></p>
+						<ul>
+							<li class="fragment"><strong class="highlight-blue">RAG</strong> is the engine behind modern AI search — it's how ChatGPT, Perplexity, and Gemini find and cite content.</li>
+							<li class="fragment">Core pipeline: <strong class="highlight-green">Retrieve</strong> relevant docs → <strong class="highlight-green">Rerank</strong> by quality → <strong class="highlight-orange">Generate</strong> answer with citations.</li>
+							<li class="fragment">Your goal: optimize content so it's <strong class="highlight-orange">retrieved, ranked high, and cited</strong>.</li>
+						</ul>
 					</div>
 					<aside class="notes">
-						This slide would show a simple flowchart – imagine the user's question goes in on the left, and on the right an answer comes out with sources attached. Under the hood, the steps are: 1) the query is transformed for search, 2) documents are retrieved, 3) a re-ranker scores them (looking at semantic match and content quality), 4) the LLM composes an answer using chunks of those docs, and 5) it cites the sources. I want you to visualize your content competing in that middle part – the retrieval and ranking. If we do GEO right, our page's snippet will survive that funnel and end up as a cited sentence in the answer. It's like a mini search engine inside the AI doing triage on content. The better structured and factual your content, the more likely it makes it through this pipeline.
+						RAG is the technical foundation of how AI search works. When you ask ChatGPT or Perplexity a question, it doesn't just generate an answer from memory — it retrieves relevant documents, ranks them, and then generates a response with citations. Understanding RAG is crucial for GEO because you need to optimize for each stage of this pipeline.
 					</aside>
+				</section>
+
+				<!-- Deep Dive: RAG Components -->
+
+				<!-- Slide 1: What are Embeddings? -->
+				<section class="has-title">
+					<h2>What are Embeddings?</h2>
+					<div class="content">
+						<ul>
+							<li class="fragment"><strong class="highlight">Embedding converts text to a fixed length numeric vector</strong> for downstream processing.</li>
+							<li class="fragment">Vectors capture the <strong class="highlight-green">meaning</strong> of the text, i.e. similar texts are close in the embedding space.</li>
+						</ul>
+						<div style="margin-top: 60px; text-align: center;">
+							<p class="fragment" style="font-size: 1.4em; margin-bottom: 20px;">Example:</p>
+							<div style="display: flex; justify-content: center; align-items: center; gap: 40px;">
+								<span class="fragment" style="font-size: 1.2em;">pizza 🍕</span>
+								<span class="fragment" style="font-size: 1.2em;">→</span>
+								<span class="fragment" style="font-size: 1em; color: var(--accent-color);">[0.2, 0.8, -0.3, ...]</span>
+								<span class="fragment" style="font-size: 1.2em;">→</span>
+								<span class="fragment" style="font-size: 2em; color: #888; padding-bottom: 10px;">•</span>
+							</div>
+							<div style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 20px;">
+								<span class="fragment" style="font-size: 1.2em;">ananas 🍍</span>
+								<span class="fragment" style="font-size: 1.2em;">→</span>
+								<span class="fragment" style="font-size: 1em; color: var(--accent-color);">[0.3, 0.7, -0.2, ...]</span>
+								<span class="fragment" style="font-size: 1.2em;">→</span>
+								<span class="fragment" style="font-size: 2em; color: #888; padding-bottom: 10px;">•</span>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Slide 1.5: Visualizing Vector Space -->
+				<section class="has-title">
+					<h2>Visualizing the Vector Space</h2>
+					<div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+
+												<svg width="600" height="450" style="margin: 20px auto;">
+							<!-- Axes -->
+							<line x1="50" y1="400" x2="550" y2="400" stroke="#666" stroke-width="2"/>
+							<line x1="50" y1="50" x2="50" y2="400" stroke="#666" stroke-width="2"/>
+							<text x="520" y="420" fill="#666" font-size="12">dimension 1</text>
+							<text x="150" y="240" fill="#666" font-size="12" transform="rotate(-90, 25, 225)">dimension 2</text>
+
+							<!-- Pizza-related cluster -->
+							<circle cx="200" cy="180" r="6" fill="#888"/>
+							<circle cx="220" cy="170" r="6" fill="#888"/>
+							<circle cx="240" cy="190" r="6" fill="#888"/>
+							<circle cx="210" cy="200" r="6" fill="#888"/>
+							<circle cx="230" cy="185" r="6" fill="#888"/>
+							<circle cx="195" cy="195" r="6" fill="#888"/>
+							<circle cx="225" cy="175" r="6" fill="#888"/>
+							<circle cx="215" cy="165" r="6" fill="#888"/>
+
+							<!-- Top-left cluster -->
+							<circle cx="120" cy="100" r="6" fill="#888"/>
+							<circle cx="135" cy="110" r="6" fill="#888"/>
+							<circle cx="145" cy="95" r="6" fill="#888"/>
+							<circle cx="130" cy="120" r="6" fill="#888"/>
+							<circle cx="110" cy="115" r="6" fill="#888"/>
+							<circle cx="125" cy="90" r="6" fill="#888"/>
+
+							<!-- Top-right cluster -->
+							<circle cx="450" cy="120" r="6" fill="#888"/>
+							<circle cx="470" cy="110" r="6" fill="#888"/>
+							<circle cx="460" cy="130" r="6" fill="#888"/>
+							<circle cx="480" cy="125" r="6" fill="#888"/>
+							<circle cx="455" cy="105" r="6" fill="#888"/>
+
+							<!-- Bottom-right cluster -->
+							<circle cx="400" cy="280" r="6" fill="#888"/>
+							<circle cx="420" cy="290" r="6" fill="#888"/>
+							<circle cx="410" cy="270" r="6" fill="#888"/>
+							<circle cx="390" cy="295" r="6" fill="#888"/>
+							<circle cx="430" cy="285" r="6" fill="#888"/>
+							<circle cx="415" cy="305" r="6" fill="#888"/>
+
+							<!-- Middle-right scattered -->
+							<circle cx="380" cy="220" r="6" fill="#888"/>
+							<circle cx="420" cy="200" r="6" fill="#888"/>
+							<circle cx="350" cy="180" r="6" fill="#888"/>
+							<circle cx="490" cy="240" r="6" fill="#888"/>
+
+							<!-- Bottom-left scattered -->
+							<circle cx="100" cy="320" r="6" fill="#888"/>
+							<circle cx="130" cy="340" r="6" fill="#888"/>
+							<circle cx="150" cy="310" r="6" fill="#888"/>
+							<circle cx="110" cy="350" r="6" fill="#888"/>
+
+							<!-- Middle scattered points -->
+							<circle cx="300" cy="140" r="6" fill="#888"/>
+							<circle cx="320" cy="250" r="6" fill="#888"/>
+							<circle cx="280" cy="300" r="6" fill="#888"/>
+							<circle cx="340" cy="330" r="6" fill="#888"/>
+							<circle cx="270" cy="100" r="6" fill="#888"/>
+							<circle cx="180" cy="260" r="6" fill="#888"/>
+
+							<!-- Pizza cluster circle and label -->
+							<circle cx="218" cy="180" r="55" fill="none" stroke="rgba(239, 83, 80, 0.5)" stroke-width="2" stroke-dasharray="5,5" class="fragment" data-fragment-index="1"/>
+							<text x="218" y="250" fill="rgba(239, 83, 80, 0.5)" font-size="14" font-weight="bold" text-anchor="middle" class="fragment" data-fragment-index="1">Pizza & Italian Food</text>
+
+							<!-- Documents cluster circle and label -->
+							<circle cx="130" cy="108" r="45" fill="none" stroke="rgba(102, 187, 106, 0.5)" stroke-width="2" stroke-dasharray="5,5" class="fragment" data-fragment-index="1"/>
+							<text x="130" y="85" fill="rgba(102, 187, 106, 0.5)" font-size="14" font-weight="bold" text-anchor="middle" class="fragment" data-fragment-index="1">Finance</text>
+
+							<!-- Technology cluster circle and label -->
+							<circle cx="463" cy="118" r="45" fill="none" stroke="rgba(66, 165, 245, 0.5)" stroke-width="2" stroke-dasharray="5,5" class="fragment" data-fragment-index="1"/>
+							<text x="463" y="95" fill="rgba(66, 165, 245, 0.5)" font-size="14" font-weight="bold" text-anchor="middle" class="fragment" data-fragment-index="1">Technology</text>
+
+							<!-- Vehicles cluster circle and label -->
+							<circle cx="410" cy="288" r="45" fill="none" stroke="rgba(255, 167, 38, 0.5)" stroke-width="2" stroke-dasharray="5,5" class="fragment" data-fragment-index="1"/>
+							<text x="410" y="345" fill="rgba(255, 167, 38, 0.5)" font-size="14" font-weight="bold" text-anchor="middle" class="fragment" data-fragment-index="1">Vehicles</text>
+						</svg>
+
+					</div>
+				</section>
+
+				<!-- Slide 2: Where do I put my embeddings and chunks? -->
+				<section class="has-title">
+					<h2>Where do I put my embeddings and chunks?</h2>
+					<div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+
+						<ul style="font-size: 0.9em; margin-top: 20px;">
+							<li class="fragment" data-fragment-index="5"><strong class="highlight-blue">Vector database</strong> (vector store) — optimized for storage and retrieval of vectors.</li>
+							<li class="fragment" data-fragment-index="6">Each <strong class="highlight-green">chunk</strong> is associated with one or more vectors.</li>
+							<li class="fragment" data-fragment-index="7"><strong class="highlight-orange">Similar meanings cluster together</strong> in vector space.</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- Slide 3: How do I find the right chunks? — Distance Metrics -->
+				<section class="has-title">
+					<h2>How do I find the right chunks? — Distance Metrics</h2>
+					<div class="content" style="display: flex; flex-direction: column; align-items: center; padding-top: 20px;">
+						<div class="fragment" data-fragment-index="2" style="font-size: 1em; margin-bottom: 20px;">Querying a vector database you want to find the <strong class="highlight-blue">best match</strong> to your query vector:</div>
+						<ul style="font-size: 0.9em;">
+							<li class="fragment" data-fragment-index="3"><strong class="highlight-green">Euclidean Distance</strong></li>
+							<li class="fragment" data-fragment-index="4"><strong class="highlight-green">Cosine Similarity</strong></li>
+							<li class="fragment" data-fragment-index="5"><strong class="highlight-green">Dot Product</strong></li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- Slide 4: Finding Relevant Chunks -->
+				<section class="has-title">
+					<h2>Finding Relevant Chunks</h2>
+					<div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+
+						<!-- Cartesian plane - always visible -->
+						<svg width="600" height="450" style="margin: 20px auto;">
+							<!-- Axes - always visible -->
+							<line x1="50" y1="400" x2="550" y2="400" stroke="#666" stroke-width="2"/>
+							<line x1="50" y1="50" x2="50" y2="400" stroke="#666" stroke-width="2"/>
+							<text x="520" y="420" fill="#666" font-size="12">dimension 1</text>
+							<text x="150" y="240" fill="#666" font-size="12" transform="rotate(-90, 25, 225)">dimension 2</text>
+
+							<!-- Pizza-related cluster (will stay inside circle) -->
+							<circle cx="200" cy="180" r="6" fill="#888"/>
+							<circle cx="240" cy="190" r="6" fill="#888"/>
+							<circle cx="210" cy="200" r="6" fill="#888"/>
+							<circle cx="195" cy="195" r="6" fill="#888"/>
+							<circle cx="225" cy="175" r="6" fill="#888"/>
+							<circle cx="215" cy="165" r="6" fill="#888"/>
+
+							<!-- Top-left cluster (documents) -->
+							<circle class="fragment fade-out" data-fragment-index="5" cx="120" cy="100" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="135" cy="110" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="145" cy="95" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="130" cy="120" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="110" cy="115" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="125" cy="90" r="6" fill="#888"/>
+
+							<!-- Top-right cluster (technology) -->
+							<circle class="fragment fade-out" data-fragment-index="5" cx="450" cy="120" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="470" cy="110" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="460" cy="130" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="480" cy="125" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="455" cy="105" r="6" fill="#888"/>
+
+							<!-- Bottom-right cluster (vehicles) -->
+							<circle class="fragment fade-out" data-fragment-index="5" cx="400" cy="280" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="420" cy="290" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="410" cy="270" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="390" cy="295" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="430" cy="285" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="415" cy="305" r="6" fill="#888"/>
+
+							<!-- Middle-right scattered -->
+							<circle class="fragment fade-out" data-fragment-index="5" cx="380" cy="220" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="420" cy="200" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="350" cy="180" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="490" cy="240" r="6" fill="#888"/>
+
+							<!-- Bottom-left scattered -->
+							<circle class="fragment fade-out" data-fragment-index="5" cx="100" cy="320" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="130" cy="340" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="150" cy="310" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="110" cy="350" r="6" fill="#888"/>
+
+							<!-- Middle scattered points -->
+							<circle class="fragment fade-out" data-fragment-index="5" cx="300" cy="140" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="320" cy="250" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="280" cy="300" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="340" cy="330" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="270" cy="100" r="6" fill="#888"/>
+							<circle class="fragment fade-out" data-fragment-index="5" cx="180" cy="260" r="6" fill="#888"/>
+
+							<!-- Query point (orange dot) - appears at index 3 -->
+							<circle class="fragment" data-fragment-index="3" cx="215" cy="185" r="10" fill="var(--accent-color)" stroke="#fff" stroke-width="1"/>
+
+							<!-- Search circle - appears at index 4 -->
+							<circle class="fragment" data-fragment-index="4" cx="215" cy="185" r="50" fill="none" stroke="var(--accent-color)" stroke-width="3" stroke-dasharray="5,5"/>
+						</svg>
+
+						<!-- Question appears above -->
+						<div class="fragment fade-out" data-fragment-index="3" style="position: absolute; top: 120px;">
+							<p style="font-size: 1.4em; text-align: center;">
+								<strong class="highlight-blue">"how to make pizza?"</strong>
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Slide 4.5: Retrieved Results -->
+				<section class="has-title">
+					<h2>Retrieved Chunks</h2>
+					<div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+						<div class="fragment" data-fragment-index="0" style="font-size: 1em; margin-bottom: 30px;">Results for: <strong class="highlight-orange">"how to make pizza"</strong></div>
+
+						<div style="max-width: 700px; width: 100%;">
+							<div class="fragment" data-fragment-index="1" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"Margherita Pizza Recipe"</span>
+								</div>
+							</div>
+
+							<div class="fragment" data-fragment-index="2" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"How to Make Pizza Dough from Scratch"</span>
+								</div>
+							</div>
+
+							<div class="fragment" data-fragment-index="3" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"Neapolitan Pizza Guide"</span>
+								</div>
+							</div>
+
+							<div class="fragment" data-fragment-index="4" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"Best Pizza Baking Temperature"</span>
+								</div>
+							</div>
+
+							<div class="fragment" data-fragment-index="5" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"Pizza Sauce Recipe"</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Slide 5: Retriever — what it does -->
+				<section class="has-title">
+					<h2>Retriever — what it does</h2>
+					<div class="content">
+						<ul>
+							<li class="fragment">Encode the user query → search the vector DB → return <strong class="highlight-blue">top‑k chunks</strong> for the LLM.</li>
+							<li class="fragment">Operate at the <strong class="highlight-green">chunk</strong> level, not full documents, to fit context and improve focus.</li>
+							<li class="fragment">Most RAG failures are <strong class="highlight-orange">retrieval misses</strong>, not generation issues.</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- Slide 6: Retriever — search modes -->
+				<section class="has-title">
+					<h2>Retriever — search modes</h2>
+					<div class="content">
+						<ul>
+							<li class="fragment"><strong class="highlight-blue">Semantic (dense):</strong> understands intent and fuzzy matches; may miss exact IDs.</li>
+							<li class="fragment"><strong class="highlight-blue">Lexical (BM25):</strong> precise keyword/ID hits; less robust to vocabulary mismatch.</li>
+							<li class="fragment"><strong class="highlight-green">Hybrid:</strong> fuse dense + lexical (e.g., RRF or score blending) for broader coverage.</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- Slide 7: Retriever — scaling up -->
+				<section class="has-title">
+					<h2>Retriever — scaling up</h2>
+					<div class="content">
+						<ul>
+							<li class="fragment"><strong class="highlight-orange">Exact KNN</strong> compares the query to every chunk — slow beyond ~100k chunks.</li>
+							<li class="fragment"><strong class="highlight-green">ANN</strong> (FAISS, ScaNN, Annoy) trades tiny recall for huge latency gains.</li>
+							<li class="fragment">Two‑step pattern: probe cluster centroids → search children.</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- Slide 8: Two‑stage retrieval -->
+				<section class="has-title">
+					<h2>Two‑stage retrieval</h2>
+					<div class="content">
+						<ul>
+							<li class="fragment"><strong class="highlight-blue">Stage 1 — Retrieve:</strong> shortlist O(100) candidates via ANN + hybrid scoring.</li>
+							<li class="fragment"><strong class="highlight-green">Stage 2 — Rerank:</strong> spend more compute to select the final O(n) chunks.</li>
+							<li class="fragment">Keeps latency low while lifting relevance and faithfulness.</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- Slide 9: Reranker — why it exists -->
+				<section class="has-title">
+					<h2>Reranker — why it exists</h2>
+					<div class="content">
+						<ul>
+							<li class="fragment">Prioritize the <strong class="highlight-blue">few</strong> chunks that truly answer the question.</li>
+							<li class="fragment">Use <strong class="highlight-green">metadata</strong> (date, author, source) and <strong class="highlight-green">authority/usage</strong> (PageRank, views, ratings).</li>
+							<li class="fragment">Reduces noise and distractors → higher faithfulness.</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- Slide 9.5: Reranking in Action -->
+				<section class="has-title" data-auto-animate>
+					<h2>Reranking in Action</h2>
+					<div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+						<div style="max-width: 700px; width: 100%;">
+							
+							<div data-id="box1" class="fragment" data-fragment-index="1" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"Margherita Pizza Recipe"</span>
+								</div>
+							</div>
+
+							<div data-id="box2" class="fragment" data-fragment-index="1" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div  style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"How to Make Pizza Dough from Scratch"</span>
+								</div>
+							</div>
+
+							<div data-id="box3" class="fragment" data-fragment-index="1" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div  style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"Neapolitan Pizza Guide"</span>
+								</div>
+							</div>
+
+							<div data-id="box4" class="fragment" data-fragment-index="1" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div  style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"Best Pizza Baking Temperature"</span>
+								</div>
+							</div>
+
+							<div data-id="box5" class="fragment" data-fragment-index="1" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div  style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"Pizza Sauce Recipe"</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="has-title" data-auto-animate>
+					<h2>Reranking in Action</h2>
+					<div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+						<div style="max-width: 700px; width: 100%;">
+
+
+							<div data-id="box2" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"How to Make Pizza Dough from Scratch"</span>
+								</div>
+							</div>
+							
+							<div data-id="box5" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div  style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"Pizza Sauce Recipe"</span>
+								</div>
+							</div>
+
+							<div  data-id="box3" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div  style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"Neapolitan Pizza Guide"</span>
+								</div>
+							</div>
+							
+							<div data-id="box1"  style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"Margherita Pizza Recipe"</span>
+								</div>
+							</div>
+
+							<div data-id="box4"  style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"Best Pizza Baking Temperature"</span>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+				</section>
+
+				<section class="has-title" data-auto-animate>
+					<h2>Reranking in Action</h2>
+					<div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+						<div style="max-width: 700px; width: 100%;">
+
+
+							<div data-id="box2" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"How to Make Pizza Dough from Scratch"</span>
+								</div>
+							</div>
+							
+							<div data-id="box5" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div  style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"Pizza Sauce Recipe"</span>
+								</div>
+							</div>
+
+							<div  data-id="box3" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div  style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"Neapolitan Pizza Guide"</span>
+								</div>
+							</div>
+							
+							<div data-id="box1" style="opacity: 0.2; background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"Margherita Pizza Recipe"</span>
+								</div>
+							</div>
+
+							<div data-id="box4"  style="opacity: 0.2; background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%); padding: 10px 15px; margin: 5px 0; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+								<div style="display: flex; align-items: center; gap: 10px; height: 40px;">
+									<span style="font-size: 2em; color: var(--primary-color); padding-bottom: 10px;">•</span>
+									<span style="font-size: 0.7em;">"Best Pizza Baking Temperature"</span>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+				</section>
+			
+
+				<!-- Slide 11: Why this matters for GEO -->
+				<section class="has-title">
+					<h2>Why this matters for GEO</h2>
+					<div class="content">
+						<ul>
+							<li class="fragment"><strong class="highlight-green">Embeddings:</strong> clear, self‑contained sections become high‑quality chunks that match queries.</li>
+							<li class="fragment"><strong class="highlight-green">Retriever:</strong> hybrid search catches both intent and exact IDs/names.</li>
+							<li class="fragment"><strong class="highlight-green">Reranker:</strong> favors fresh, credible sources — increasing your chance of being <strong class="highlight-orange">cited</strong>.</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- Slide 12: Build checklist -->
+				<section class="has-title">
+					<h2>Build checklist</h2>
+					<div class="content">
+						<ul>
+							<li class="fragment">Chunk by headings; keep sections self‑contained and fact‑dense.</li>
+							<li class="fragment">Use <strong class="highlight-blue">task‑aware embeddings</strong>; consider <strong class="highlight-blue">HyDE</strong> and <strong class="highlight-blue">Hypothetical Questions</strong> to widen recall.</li>
+							<li class="fragment">Adopt <strong class="highlight-green">hybrid retrieval</strong> + <strong class="highlight-green">ANN</strong>, then <strong class="highlight-orange">rerank</strong> with metadata/authority signals.</li>
+						</ul>
+					</div>
 				</section>
 
 				<!-- Slide 21: RAG and GEO -->
@@ -534,37 +1021,46 @@
 				</section>
 
 				<!-- Slide 22: Chunking Example -->
-				<section class="has-title">
+				<section class="has-title" data-auto-animate>
 					<h2>How GEO Content Aids Chunking & Retrieval</h2>
 					<div class="content">
-						<p><strong class="highlight-orange">Scenario:</strong> Question – "What are the top 3 features of Framework X?"</p>
-						<ul>
-							<li class="fragment"><strong class="highlight-green">Page A:</strong> Has an H2 "Top 3 Features of Framework X" followed by a concise list of 1, 2, 3.</li>
-							<li class="fragment"><strong class="highlight-red">Page B:</strong> Long essay, mentions features in a paragraph buried in text.</li>
-						</ul>
-						<p class="fragment"><strong class="highlight-blue">RAG result:</strong> Vector search is more likely to grab Page A's dedicated section. The AI can directly quote the 3 features list.</p>
+						<p data-id="scenario-text" style="margin-bottom: 30px;"><strong class="highlight-orange">Scenario:</strong> Question – "Is Ruby still relevant in 2025?"</p>
+
+						<div style="display: flex; gap: 40px; justify-content: center; align-items: flex-start; margin-top: 30px;">
+							<!-- Page A - Left Side -->
+							<div data-id="page-a" style="flex: 1; max-width: 45%; padding: 25px; border-radius: 8px; box-shadow: 0 0 20px rgba(94, 91, 91, 0.961);">
+								<img src="img/50_chunk1.jpeg" alt="Page A - Structured Content" style="width: 100%; height: auto; border-radius: 4px;">
+							</div>
+
+							<!-- Page B - Right Side with opacity -->
+							<div data-id="page-b" style="flex: 1; max-width: 45%; padding: 25px; border-radius: 8px; box-shadow: 0 0 20px rgba(94, 91, 91, 0.961);">
+								<img src="img/50_chunk2.jpeg" alt="Page B - Unstructured Content" style="width: 100%; height: auto; border-radius: 4px;">
+							</div>
+						</div>
 					</div>
 					<aside class="notes">
 						Let's illustrate with a concrete example. Suppose a user asks: "What are the top 3 features of Framework X?" Now imagine we have two pages in our knowledge base: Page A and Page B. Page A has a nice section, clearly labeled "Top 3 Features of Framework X" as an H2, and then it lists 1, 2, 3 with bold headings and explanations. Page B is a blog post that discusses Framework X in a narrative way, and it does mention some features but in a buried paragraph. In a RAG pipeline, when that question's embedding is used to query, Page A's structured section is a gift – the embedding of that chunk will likely match "features of Framework X" strongly, and the chunk is self-contained. Page B might have a decent semantic match too, but the info is diluted by other text around it. A vector search will often surface Page A's list higher. The LLM then sees a neat list of 3 features – it can just incorporate that into the answer. The moral: when you structure content into discrete chunks, you make it dead simple for the retriever to find the exact answer snippet.
 					</aside>
 				</section>
 
-				<!-- Slide 23: Structured vs Fluff -->
-				<section class="has-title">
-					<h2>Structured Content vs Fluff – The AI Preference</h2>
+				<!-- Slide 22.5: RAG Result -->
+				<section class="has-title" data-auto-animate>
+					<h2>How GEO Content Aids Chunking & Retrieval</h2>
 					<div class="content">
-						<p><strong class="highlight-red">Fluffy content:</strong> "Framework X is really great. It has changed how many developers work..."</p>
-						<p><strong class="highlight-green">Structured content:</strong></p>
-						<ul>
-							<li class="fragment"><strong class="highlight-blue">High Performance</strong> – Optimized core yields fast load times</li>
-							<li class="fragment"><strong class="highlight-blue">Extensibility</strong> – Plugin system allows adding features</li>
-							<li class="fragment"><strong class="highlight-blue">Developer UX</strong> – Clear documentation and intuitive APIs</li>
-						</ul>
-						<p class="fragment"><strong class="highlight-orange">AI picks:</strong> The structured list wins – it directly answers "top 3 features" clearly and factually.</p>
+						<p data-id="scenario-text" style="margin-bottom: 30px;"><strong class="highlight-blue">Result:</strong> Left page is better because its tighter, smaller sections create more precise chunks that vector search can match far more accurately. </p>
+
+						<div style="display: flex; gap: 40px; justify-content: center; align-items: flex-start; margin-top: 30px;">
+							<!-- Page A - Left Side -->
+							<div data-id="page-a" style="flex: 1; max-width: 45%; background: linear-gradient(135deg, rgba(102, 187, 106, 0.1) 0%, rgba(102, 187, 106, 0.05) 100%); padding: 25px; border-radius: 8px; border: 2px solid var(--success-color); box-shadow: 0 0 20px rgba(102, 187, 106, 0.4);">
+								<img src="img/50_chunk1.jpeg" alt="Page A - Structured Content" style="width: 100%; height: auto; border-radius: 4px;">
+							</div>
+
+							<!-- Page B - Right Side with opacity -->
+							<div data-id="page-b" style="flex: 1; max-width: 45%; background: linear-gradient(135deg, rgba(239, 83, 80, 0.1) 0%, rgba(239, 83, 80, 0.05) 100%); padding: 25px; border-radius: 8px; border: 2px solid var(--warning-color); opacity: 0.3;">
+								<img src="img/50_chunk2.jpeg" alt="Page B - Unstructured Content" style="width: 100%; height: auto; border-radius: 4px;">
+							</div>
+						</div>
 					</div>
-					<aside class="notes">
-						This slide shows a stylized contrast. The first part is fluffy content – it's praise and generic statements about Framework X, but if someone asked "what are its top features?", that paragraph doesn't give a clean answer. It's more marketing than information. The second part is structured content specifically listing the top 3 features with a bit of detail. If I'm an AI, the second one is a no-brainer: it literally has a matching structure to the question and provides a numbered answer. This is why we emphasize GEO techniques – the AI is basically looking for the second style of content. Think of writing for AI as writing Stack Overflow-like answers: be direct, enumerate your points, don't beat around the bush. Fluff pieces that sound like an excited press release often get bypassed because they don't contain extractable knowledge.
-					</aside>
 				</section>
 
 				<!-- Slide 24: Content Structuring Recap -->
@@ -596,88 +1092,6 @@
 					</div>
 					<aside class="notes">
 						As developers, how do we apply all this? First, start thinking of your content as data that needs structuring. Just as you'd create a well-defined JSON for an API, structure your HTML/content so a machine can easily traverse it. You might even build internal tools or content linters: for example, a script that scans Markdown files to ensure there's a heading every X paragraphs, or checks if each section has at least one number (fact) in it. We can quantify some GEO metrics. Also, if you're building search or QA systems, consider tweaking your retrieval algorithms to account for these signals. In the upcoming workshop, we'll get our hands dirty doing exactly that – we'll build a simple RAG prototype where we incorporate some GEO-like scoring. This will show in real terms how much these factors can improve answer quality. Essentially, we'll turn theory into practice and see how devs can programmatically identify and prefer GEO-optimized content.
-					</aside>
-				</section>
-
-				<!-- Slide 26: Workshop Preview -->
-				<section class="has-title">
-					<h2>Workshop Preview – Building a GEO-Optimized RAG</h2>
-					<div class="content">
-						<p><strong class="highlight-green">Goal:</strong> Implement a retrieval + LLM answer system that favors GEO-optimized content</p>
-						<p><strong class="highlight-blue">Steps:</strong></p>
-						<ol>
-							<li class="fragment">Index content with structure (sections as separate documents in vector DB)</li>
-							<li class="fragment">Augment retrieval scoring: score = similarity + α*(has_h2 + fact_count + authority_score)</li>
-							<li class="fragment">LLM generates answer from top chunks, evaluate if GEO scoring improved answers</li>
-						</ol>
-						<p class="fragment"><strong class="highlight-orange">Expect to see how structured, fact-rich content yields better answers in practice</strong></p>
-					</div>
-					<aside class="notes">
-						Here's a sneak peek of the workshop. We're going to build a tiny RAG pipeline. We'll take some content and chunk them by their structure – likely by headings. We'll put those chunks in a vector database. When a query comes in, we'll retrieve by vector similarity, but we'll add some custom scoring. For instance, we can examine each candidate chunk and add points if it starts with an H2 title or if it contains numbers (as a proxy for fact density) or if the source domain is in a known trusted list. We might have a formula like score = embedding_similarity + 0.1*(numFacts) + 0.2*(hasSchemaOrFAQ ? 1:0). Then we'll feed the top chunks to an LLM to get an answer, and see if the answer is better when using our GEO-weighted retrieval vs plain retrieval. It's a developer-friendly way to internalize GEO: by coding and observing the difference.
-					</aside>
-				</section>
-
-				<!-- Slide 27: Pseudocode Example -->
-				<section class="has-title">
-					<h2>Pseudocode – GEO-Aware Retrieval Scoring</h2>
-					<div class="content">
-						<pre><code class="python" data-trim data-line-numbers>
-# Given candidate chunks with base similarity scores
-for chunk in candidate_chunks:
-    score = chunk.similarity_score
-    if chunk.starts_with_h2:
-        score += 0.05  # boost if chunk is a distinct section
-    score += 0.02 * chunk.fact_count  # boost per fact/statistic
-    if chunk.source_domain in AUTHORITY_DOMAINS:
-        score += 0.1  # boost if from authoritative domain
-    if "FAQPage" in chunk.source_schema_types:
-        score += 0.03  # boost if part of FAQ
-    chunk.final_score = score
-
-# Sort and pick top chunks for LLM
-top_chunks = sorted(candidate_chunks,
-                   key=lambda c: c.final_score,
-                   reverse=True)[:N]
-					</code></pre>
-					</div>
-					<aside class="notes">
-						This pseudocode illustrates how a developer might programmatically favor GEO-optimized content in retrieval. We loop through candidate chunks returned by a vector search. For each chunk, we start with its similarity score. Then we sprinkle on bonuses: if the chunk represents a well-defined section, we add a bit. We add for each fact it has. If it's from a high authority domain, we give a boost. If the page had certain schema like FAQPage, give a boost. After that, we sort by this new score and take the top chunks to feed to the LLM. This is a rough example, but it shows the principle: we can operationalize GEO best practices in our algorithms. The result should be that the LLM gets better input – more structured, factual pieces – and thus produces a better answer.
-					</aside>
-				</section>
-
-				<!-- Slide 28: Key Takeaways -->
-				<section class="has-title">
-					<h2>Key Takeaways</h2>
-					<div class="content">
-						<ul>
-							<li class="fragment"><strong class="highlight-green">GEO = SEO for the AI era</strong> – Optimize for AI consumption and citation</li>
-							<li class="fragment"><strong class="highlight-blue">Content must be AI-friendly:</strong> structured, factual, and authoritative</li>
-							<li class="fragment"><strong class="highlight-orange">Think like the AI:</strong> ask "Would ChatGPT pick this up?" – refine until yes</li>
-							<li class="fragment"><strong class="highlight-green">Developers' role:</strong> Influence both content creation (docs, guides) and retrieval systems</li>
-							<li class="fragment"><strong class="highlight-blue">Embrace the change:</strong> Early adopters of GEO are gaining visibility edge in AI-driven channels</li>
-						</ul>
-					</div>
-					<aside class="notes">
-						As we wrap up, remember these key points: GEO is basically the new SEO. We're optimizing for a different consumer – not just the human reader or Google crawler, but the AI that's going to serve content to users. That means writing and structuring content in an AI-friendly way – structured, factual, credible. A good habit is when you create content, pause and ask: "If I were ChatGPT or Bard, would I use this content in an answer?" If no, then you know what to improve. For developers, this isn't just a content team issue – we often write docs, READMEs, knowledge base articles, and we build the systems that leverage this content. Finally, embrace GEO early. Those who are already doing this are seeing their brands pop up in AI answers more often, which can translate to influence and traffic in a new way. The search landscape is shifting, but with these strategies, you'll be well-equipped to lead in this new era.
-					</aside>
-				</section>
-
-				<!-- Slide 29: Q&A and Resources -->
-				<section class="has-title">
-					<h2>Q&A and Next Steps</h2>
-					<div class="content">
-						<p><strong class="highlight-green">Questions?</strong> Let's discuss any concepts or techniques in detail</p>
-						<p class="fragment"><strong class="highlight-blue">After Q&A:</strong> Workshop time! We'll implement a GEO-aware RAG pipeline together</p>
-						<p class="fragment"><strong class="highlight-orange">Resources for further reading:</strong></p>
-						<ul style="font-size: 0.8em;" class="fragment">
-							<li>"What is Generative Engine Optimization? – Complete Guide 2025" (Frase.io)</li>
-							<li>"10-Step GEO Framework [2025]" (Profound blog)</li>
-							<li>"Generative Engine Optimization Strategies for 2025" (Go Fish Digital)</li>
-							<li>Princeton & Stanford research on AI citation patterns (arXiv 2025)</li>
-						</ul>
-					</div>
-					<aside class="notes">
-						Thank you for sticking with me through this deep dive! Now I'd love to open it up for questions. Feel free to ask about any of the GEO pillars, the techniques, or how this might apply to your specific situation. After we address questions, we'll transition into the workshop where we get hands-on and actually implement some of these ideas in code. I've also listed resources if you're hungry for more information – these include an excellent comprehensive guide on GEO, a practical framework from Profound, and a strategy whitepaper. There's also academic research that gave insight into what content features correlate with AI citations. Alright, let's hear your questions and thoughts, and then we'll roll up our sleeves for the workshop!
 					</aside>
 				</section>
 			</div>
