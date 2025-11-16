@@ -1,8 +1,10 @@
-# GEO & RAG Presentation
+# GEO × RAG
+
+**Optimize Content for the AI Era**
 
 Presentation about **Generative Engine Optimization (GEO)** and **RAG (Retrieval-Augmented Generation)** by Gianlorenzo Occhipinti for the Learning Week Block on November 17th, 2025.
 
-This repository contains the Reveal.js deck **“Generative Engine Optimization (GEO) & RAG** and a consolidated bibliography used to build the new slides on **Embeddings**, **Retrievers**, and **Rerankers**.  
+This repository contains the Reveal.js deck **"GEO × RAG"** and a consolidated bibliography used to build the new slides on **Embeddings**, **Retrievers**, and **Rerankers**.  
 
 ---
 ## Consolidated Bibliography (papers, posts, and tools)

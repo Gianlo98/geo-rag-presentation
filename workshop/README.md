@@ -67,9 +67,14 @@ Both `run.sh` and `debug.sh` automatically call these commands. They start the d
 
 
 
-## 🐍 Python Environment (optional local use)
+## 🐍 Python Environment 
 
-If you want to inspect files, run small experiments, or experiment outside Docker:
+To setup the virtual environment you can run 
+```
+sh setup.sh
+```
+
+or if you want to do it manually, you can run 
 ```
 python -m venv .venv
 source .venv/bin/activate
